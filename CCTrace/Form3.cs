@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 
+//testing the db connection
+//todo:
+//      make this form into a searchable admin page
 namespace CCTrace
 {
     public partial class Form3 : Form

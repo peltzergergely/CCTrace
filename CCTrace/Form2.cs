@@ -9,6 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//This is the sample product form
+//todo: add timestamp
+//      save to string
+//      dummy output to the db
 namespace CCTrace
 {
     public partial class Form2 : Form

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//this is just the main menu
 namespace CCTrace
 {
     public partial class MainScr : Form
