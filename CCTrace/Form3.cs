@@ -50,7 +50,7 @@ namespace CCTrace
                 NpgsqlConnection conn = new NpgsqlConnection(connstring);
                 conn.Open();
                 // quite complex sql statement
-                string sql = "SELECT * FROM simple_table";
+                string sql = "SELECT * FROM prod1_201744";
                 // data adapter making request from our connection
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
                 ds.Reset();

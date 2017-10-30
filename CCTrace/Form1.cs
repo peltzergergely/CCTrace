@@ -25,10 +25,11 @@ namespace CCTrace
 
         private void MainScr_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (CloseCancel() == false)
-            {
-                e.Cancel = true;
-            };
+
+            //if (CloseCancel() == false)
+            //{
+            //    e.Cancel = true;
+            //};
         }
 
         public static bool CloseCancel()
