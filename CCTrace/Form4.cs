@@ -30,7 +30,14 @@ namespace CCTrace
             }
             //updateLbl();
         }
-
+        //checks if txtbx is empty
+        private bool dataValid()
+        {
+            if (prodTbx.TextLength > 0 && dateTimePicker1.Value < DateTime.Today)
+                return true;
+            else
+                return false;
+        }
         private void exitBtn_Click(object sender, EventArgs e)
         {
             this.Close();
