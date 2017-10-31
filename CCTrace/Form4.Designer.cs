@@ -1,6 +1,6 @@
 ﻿namespace CCTrace
 {
-    partial class Form2
+    partial class form4
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.prodTbx = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.headerLbl = new System.Windows.Forms.Label();
-            this.prodLbl = new System.Windows.Forms.Label();
-            this.carrLbl = new System.Windows.Forms.Label();
+            this.batchLbl = new System.Windows.Forms.Label();
+            this.expLbl = new System.Windows.Forms.Label();
             this.outputLbl = new System.Windows.Forms.Label();
             this.exitBtn = new System.Windows.Forms.Button();
-            this.carrTbx = new System.Windows.Forms.TextBox();
+            this.prodTbx = new System.Windows.Forms.TextBox();
             this.saveBtn = new System.Windows.Forms.Button();
             this.outputMsgLbl = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.beállításokToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.segítségToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // prodTbx
-            // 
-            this.prodTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prodTbx.Location = new System.Drawing.Point(539, 246);
-            this.prodTbx.Margin = new System.Windows.Forms.Padding(2);
-            this.prodTbx.Name = "prodTbx";
-            this.prodTbx.Size = new System.Drawing.Size(465, 60);
-            this.prodTbx.TabIndex = 0;
-            this.prodTbx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.prodTbx.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
             // 
             // tableLayoutPanel1
             // 
@@ -67,18 +51,18 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.63636F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.Controls.Add(this.headerLbl, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.prodLbl, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.carrLbl, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.batchLbl, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.expLbl, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.outputLbl, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.exitBtn, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.carrTbx, 4, 3);
             this.tableLayoutPanel1.Controls.Add(this.prodTbx, 4, 2);
             this.tableLayoutPanel1.Controls.Add(this.saveBtn, 6, 6);
             this.tableLayoutPanel1.Controls.Add(this.outputMsgLbl, 4, 4);
+            this.tableLayoutPanel1.Controls.Add(this.dateTimePicker1, 4, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
@@ -90,8 +74,8 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1477, 778);
-            this.tableLayoutPanel1.TabIndex = 1;
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1285, 594);
+            this.tableLayoutPanel1.TabIndex = 2;
             // 
             // headerLbl
             // 
@@ -103,41 +87,41 @@
             this.headerLbl.Location = new System.Drawing.Point(22, 16);
             this.headerLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.headerLbl.Name = "headerLbl";
-            this.headerLbl.Size = new System.Drawing.Size(1453, 228);
+            this.headerLbl.Size = new System.Drawing.Size(1261, 228);
             this.headerLbl.TabIndex = 0;
-            this.headerLbl.Text = "Olvasd be a Termék majd a szállító keret vonalkódját";
+            this.headerLbl.Text = "Írd be a LAKK batch számát és lejárati dátumát!";
             this.headerLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // prodLbl
+            // batchLbl
             // 
-            this.prodLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.prodLbl.AutoSize = true;
-            this.prodLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prodLbl.Location = new System.Drawing.Point(339, 249);
-            this.prodLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.prodLbl.Name = "prodLbl";
-            this.prodLbl.Size = new System.Drawing.Size(196, 54);
-            this.prodLbl.TabIndex = 7;
-            this.prodLbl.Text = "Termék:";
+            this.batchLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.batchLbl.AutoSize = true;
+            this.batchLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.batchLbl.Location = new System.Drawing.Point(356, 249);
+            this.batchLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.batchLbl.Name = "batchLbl";
+            this.batchLbl.Size = new System.Drawing.Size(143, 54);
+            this.batchLbl.TabIndex = 7;
+            this.batchLbl.Text = "Batch";
             // 
-            // carrLbl
+            // expLbl
             // 
-            this.carrLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.carrLbl.AutoSize = true;
-            this.carrLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.carrLbl.Location = new System.Drawing.Point(387, 313);
-            this.carrLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.carrLbl.Name = "carrLbl";
-            this.carrLbl.Size = new System.Drawing.Size(148, 54);
-            this.carrLbl.TabIndex = 8;
-            this.carrLbl.Text = "Keret:";
+            this.expLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.expLbl.AutoSize = true;
+            this.expLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.expLbl.Location = new System.Drawing.Point(333, 314);
+            this.expLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.expLbl.Name = "expLbl";
+            this.expLbl.Size = new System.Drawing.Size(166, 54);
+            this.expLbl.TabIndex = 8;
+            this.expLbl.Text = "Lejárat";
             // 
             // outputLbl
             // 
             this.outputLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.outputLbl.AutoSize = true;
             this.outputLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.outputLbl.Location = new System.Drawing.Point(327, 515);
+            this.outputLbl.Location = new System.Drawing.Point(291, 424);
             this.outputLbl.Name = "outputLbl";
             this.outputLbl.Size = new System.Drawing.Size(207, 54);
             this.outputLbl.TabIndex = 9;
@@ -147,7 +131,7 @@
             // 
             this.exitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitBtn.Location = new System.Drawing.Point(22, 715);
+            this.exitBtn.Location = new System.Drawing.Point(22, 531);
             this.exitBtn.Margin = new System.Windows.Forms.Padding(2);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(115, 45);
@@ -155,114 +139,83 @@
             this.exitBtn.TabStop = false;
             this.exitBtn.Text = "Kilépés";
             this.exitBtn.UseVisualStyleBackColor = true;
-            this.exitBtn.Click += new System.EventHandler(this.button3_Click);
+            this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
             // 
-            // carrTbx
+            // prodTbx
             // 
-            this.carrTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.carrTbx.Location = new System.Drawing.Point(539, 310);
-            this.carrTbx.Margin = new System.Windows.Forms.Padding(2);
-            this.carrTbx.Name = "carrTbx";
-            this.carrTbx.Size = new System.Drawing.Size(465, 60);
-            this.carrTbx.TabIndex = 1;
-            this.carrTbx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.carrTbx.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
+            this.prodTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prodTbx.Location = new System.Drawing.Point(503, 246);
+            this.prodTbx.Margin = new System.Windows.Forms.Padding(2);
+            this.prodTbx.Name = "prodTbx";
+            this.prodTbx.Size = new System.Drawing.Size(372, 60);
+            this.prodTbx.TabIndex = 0;
+            this.prodTbx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.prodTbx.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
             // 
             // saveBtn
             // 
             this.saveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveBtn.Location = new System.Drawing.Point(1335, 715);
+            this.saveBtn.Location = new System.Drawing.Point(1142, 531);
             this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(115, 45);
             this.saveBtn.TabIndex = 3;
             this.saveBtn.Text = "Mentés";
             this.saveBtn.UseVisualStyleBackColor = true;
-            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // outputMsgLbl
             // 
             this.outputMsgLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.outputMsgLbl.AutoSize = true;
             this.outputMsgLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.outputMsgLbl.Location = new System.Drawing.Point(540, 515);
+            this.outputMsgLbl.Location = new System.Drawing.Point(504, 424);
             this.outputMsgLbl.Name = "outputMsgLbl";
             this.outputMsgLbl.Size = new System.Drawing.Size(288, 54);
             this.outputMsgLbl.TabIndex = 10;
             this.outputMsgLbl.Text = "EREDMÉNY";
             // 
-            // menuStrip1
+            // dateTimePicker1
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.beállításokToolStripMenuItem,
-            this.segítségToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1477, 24);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
+            this.dateTimePicker1.CustomFormat = "MM/yyyy";
+            this.dateTimePicker1.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(504, 311);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.ShowUpDown = true;
+            this.dateTimePicker1.Size = new System.Drawing.Size(208, 60);
+            this.dateTimePicker1.TabIndex = 11;
+            this.dateTimePicker1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
             // 
-            // beállításokToolStripMenuItem
-            // 
-            this.beállításokToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.adminToolStripMenuItem});
-            this.beállításokToolStripMenuItem.Name = "beállításokToolStripMenuItem";
-            this.beállításokToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
-            this.beállításokToolStripMenuItem.Text = "Beállítások";
-            // 
-            // adminToolStripMenuItem
-            // 
-            this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.adminToolStripMenuItem.Text = "AdminPage";
-            this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
-            // 
-            // segítségToolStripMenuItem
-            // 
-            this.segítségToolStripMenuItem.Name = "segítségToolStripMenuItem";
-            this.segítségToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.segítségToolStripMenuItem.Text = "Segítség";
-            // 
-            // Form2
+            // form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1477, 802);
+            this.ClientSize = new System.Drawing.Size(1285, 594);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "Form2";
-            this.Text = "Termék1";
+            this.Name = "form4";
+            this.Text = "Lakk anyag felvitel";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.form4_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox prodTbx;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button exitBtn;
         private System.Windows.Forms.Label headerLbl;
-        private System.Windows.Forms.TextBox carrTbx;
-        private System.Windows.Forms.Label prodLbl;
-        private System.Windows.Forms.Label carrLbl;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem beállításokToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem segítségToolStripMenuItem;
+        private System.Windows.Forms.Label batchLbl;
+        private System.Windows.Forms.Label expLbl;
         private System.Windows.Forms.Label outputLbl;
-        private System.Windows.Forms.Label outputMsgLbl;
+        private System.Windows.Forms.Button exitBtn;
+        private System.Windows.Forms.TextBox prodTbx;
         private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.Label outputMsgLbl;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

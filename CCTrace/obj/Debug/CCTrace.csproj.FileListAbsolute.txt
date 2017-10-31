@@ -33,3 +33,4 @@ D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.pdb
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.Form3.resources
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Debug\Npgsql.dll
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Debug\Mono.Security.dll
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.form4.resources

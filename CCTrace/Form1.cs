@@ -48,13 +48,19 @@ namespace CCTrace
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form2 frm = new Form2(this);
+            var frm = new Form2(this);
             frm.Show();
         }
 
         private void adminPageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form3 frm = new Form3(this);
+            var frm = new Form3(this);
+            frm.Show();
+        }
+
+        private void varnBtn_Click(object sender, EventArgs e)
+        {
+            var frm = new form4(this);
             frm.Show();
         }
     }

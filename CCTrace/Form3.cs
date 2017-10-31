@@ -37,20 +37,26 @@ namespace CCTrace
         private DataSet ds = new DataSet();
         private DataTable dt = new DataTable();
 
-        private void button1_Click(object sender, EventArgs e)
+        //DB connect string
+        private string db_connect()
+        {
+            return String.Format("Server={0};Port={1};" +
+                    "User Id={2};Password={3};Database={4};",
+                    "localhost", "5432", "postgres",
+                    "admin", "CCDB");
+        }
+
+        private void table_select(string table)
         {
             try
             {
                 // PostgeSQL-style connection string
-                string connstring = String.Format("Server={0};Port={1};" +
-                    "User Id={2};Password={3};Database={4};",
-                    "localhost", "5432", "postgres",
-                    "admin", "CCDB");
+                string connstring = db_connect();
                 // Making connection with Npgsql provider
                 NpgsqlConnection conn = new NpgsqlConnection(connstring);
                 conn.Open();
                 // quite complex sql statement
-                string sql = "SELECT * FROM prod1_201744";
+                string sql = "SELECT * FROM " + table;
                 // data adapter making request from our connection
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
                 ds.Reset();
@@ -69,6 +75,53 @@ namespace CCTrace
                 MessageBox.Show(msg.ToString());
                 throw;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // PostgeSQL-style connection string
+                string connstring = db_connect();
+                // Making connection with Npgsql provider
+                NpgsqlConnection conn = new NpgsqlConnection(connstring);
+                conn.Open();
+                // quite complex sql statement
+                string sql = "SELECT * FROM prod1";
+                // data adapter making request from our connection
+                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+                ds.Reset();
+                // filling DataSet with result from NpgsqlDataAdapter
+                da.Fill(ds);
+                // since it C# DataSet can handle multiple tables, we will select first
+                dt = ds.Tables[0];
+                // connect grid to DataTable
+                dataGridView1.DataSource = dt;
+                // since we only showing the result we don't need connection anymore
+                conn.Close();
+            }
+            catch (Exception msg)
+            {
+                // something went wrong, and you wanna know why
+                MessageBox.Show(msg.ToString());
+                throw;
+            }
+        }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+            this.button1_Click(sender, e);
+            comboBox1.SelectedIndex = 0;
+        }
+
+        private void termék1_Click(object sender, EventArgs e)
+        {
+            table_select("prod1");
+        }
+
+        private void lakk_Click(object sender, EventArgs e)
+        {
+            table_select("lakk");
         }
     }
 }
