@@ -34,10 +34,10 @@
             this.expLbl = new System.Windows.Forms.Label();
             this.outputLbl = new System.Windows.Forms.Label();
             this.exitBtn = new System.Windows.Forms.Button();
-            this.prodTbx = new System.Windows.Forms.TextBox();
+            this.batchTbx = new System.Windows.Forms.TextBox();
             this.saveBtn = new System.Windows.Forms.Button();
             this.outputMsgLbl = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.expdateDtp = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,10 +57,10 @@
             this.tableLayoutPanel1.Controls.Add(this.expLbl, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.outputLbl, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.exitBtn, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.prodTbx, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.batchTbx, 4, 2);
             this.tableLayoutPanel1.Controls.Add(this.saveBtn, 6, 6);
             this.tableLayoutPanel1.Controls.Add(this.outputMsgLbl, 4, 4);
-            this.tableLayoutPanel1.Controls.Add(this.dateTimePicker1, 4, 3);
+            this.tableLayoutPanel1.Controls.Add(this.expdateDtp, 4, 3);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
@@ -141,16 +141,16 @@
             this.exitBtn.UseVisualStyleBackColor = true;
             this.exitBtn.Click += new System.EventHandler(this.exitBtn_Click);
             // 
-            // prodTbx
+            // batchTbx
             // 
-            this.prodTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prodTbx.Location = new System.Drawing.Point(503, 246);
-            this.prodTbx.Margin = new System.Windows.Forms.Padding(2);
-            this.prodTbx.Name = "prodTbx";
-            this.prodTbx.Size = new System.Drawing.Size(372, 60);
-            this.prodTbx.TabIndex = 0;
-            this.prodTbx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.prodTbx.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
+            this.batchTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.batchTbx.Location = new System.Drawing.Point(503, 246);
+            this.batchTbx.Margin = new System.Windows.Forms.Padding(2);
+            this.batchTbx.Name = "batchTbx";
+            this.batchTbx.Size = new System.Drawing.Size(372, 60);
+            this.batchTbx.TabIndex = 0;
+            this.batchTbx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.batchTbx.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
             // 
             // saveBtn
             // 
@@ -163,6 +163,7 @@
             this.saveBtn.TabIndex = 3;
             this.saveBtn.Text = "Mentés";
             this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // outputMsgLbl
             // 
@@ -175,20 +176,20 @@
             this.outputMsgLbl.TabIndex = 10;
             this.outputMsgLbl.Text = "EREDMÉNY";
             // 
-            // dateTimePicker1
+            // expdateDtp
             // 
-            this.dateTimePicker1.CustomFormat = "MM/yyyy";
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(504, 311);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
-            this.dateTimePicker1.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.ShowUpDown = true;
-            this.dateTimePicker1.Size = new System.Drawing.Size(208, 60);
-            this.dateTimePicker1.TabIndex = 1;
-            this.dateTimePicker1.Value = new System.DateTime(2017, 10, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
+            this.expdateDtp.CustomFormat = "MM/yyyy";
+            this.expdateDtp.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.expdateDtp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.expdateDtp.Location = new System.Drawing.Point(504, 311);
+            this.expdateDtp.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
+            this.expdateDtp.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
+            this.expdateDtp.Name = "expdateDtp";
+            this.expdateDtp.ShowUpDown = true;
+            this.expdateDtp.Size = new System.Drawing.Size(208, 60);
+            this.expdateDtp.TabIndex = 1;
+            this.expdateDtp.Value = new System.DateTime(2017, 10, 1, 0, 0, 0, 0);
+            this.expdateDtp.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
             // 
             // form4
             // 
@@ -215,9 +216,9 @@
         private System.Windows.Forms.Label expLbl;
         private System.Windows.Forms.Label outputLbl;
         private System.Windows.Forms.Button exitBtn;
-        private System.Windows.Forms.TextBox prodTbx;
+        private System.Windows.Forms.TextBox batchTbx;
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Label outputMsgLbl;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker expdateDtp;
     }
 }
