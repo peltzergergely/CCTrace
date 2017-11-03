@@ -38,10 +38,10 @@
             this.carrTbx = new System.Windows.Forms.TextBox();
             this.saveBtn = new System.Windows.Forms.Button();
             this.outputMsgLbl = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.beállításokToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.segítségToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -52,7 +52,7 @@
             this.prodTbx.Location = new System.Drawing.Point(539, 246);
             this.prodTbx.Margin = new System.Windows.Forms.Padding(2);
             this.prodTbx.Name = "prodTbx";
-            this.prodTbx.Size = new System.Drawing.Size(465, 60);
+            this.prodTbx.Size = new System.Drawing.Size(464, 60);
             this.prodTbx.TabIndex = 0;
             this.prodTbx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.prodTbx.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
@@ -67,7 +67,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.63636F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel1.Controls.Add(this.headerLbl, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.prodLbl, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.carrLbl, 3, 3);
@@ -163,7 +163,7 @@
             this.carrTbx.Location = new System.Drawing.Point(539, 310);
             this.carrTbx.Margin = new System.Windows.Forms.Padding(2);
             this.carrTbx.Name = "carrTbx";
-            this.carrTbx.Size = new System.Drawing.Size(465, 60);
+            this.carrTbx.Size = new System.Drawing.Size(464, 60);
             this.carrTbx.TabIndex = 1;
             this.carrTbx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.carrTbx.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
@@ -172,7 +172,7 @@
             // 
             this.saveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveBtn.Location = new System.Drawing.Point(1335, 715);
+            this.saveBtn.Location = new System.Drawing.Point(1334, 715);
             this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(115, 45);
@@ -191,19 +191,6 @@
             this.outputMsgLbl.Size = new System.Drawing.Size(288, 54);
             this.outputMsgLbl.TabIndex = 10;
             this.outputMsgLbl.Text = "EREDMÉNY";
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.beállításokToolStripMenuItem,
-            this.segítségToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1477, 24);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // beállításokToolStripMenuItem
             // 
@@ -225,6 +212,19 @@
             this.segítségToolStripMenuItem.Name = "segítségToolStripMenuItem";
             this.segítségToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.segítségToolStripMenuItem.Text = "Segítség";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.beállításokToolStripMenuItem,
+            this.segítségToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1477, 24);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "menuStrip1";
             // 
             // Form2
             // 
@@ -257,12 +257,12 @@
         private System.Windows.Forms.TextBox carrTbx;
         private System.Windows.Forms.Label prodLbl;
         private System.Windows.Forms.Label carrLbl;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem beállításokToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem segítségToolStripMenuItem;
         private System.Windows.Forms.Label outputLbl;
         private System.Windows.Forms.Label outputMsgLbl;
         private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.ToolStripMenuItem beállításokToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem segítségToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip1;
     }
 }

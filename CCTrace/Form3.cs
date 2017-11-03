@@ -46,7 +46,7 @@ namespace CCTrace
                     "admin", "CCDB");
         }
 
-        private void table_select(string table)
+        private void table_select(string query)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace CCTrace
                 NpgsqlConnection conn = new NpgsqlConnection(connstring);
                 conn.Open();
                 // quite complex sql statement
-                string sql = "SELECT * FROM " + table;
+                string sql = query;
                 // data adapter making request from our connection
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
                 ds.Reset();
@@ -73,55 +73,37 @@ namespace CCTrace
             {
                 // something went wrong, and you wanna know why
                 MessageBox.Show(msg.ToString());
-                throw;
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // PostgeSQL-style connection string
-                string connstring = db_connect();
-                // Making connection with Npgsql provider
-                NpgsqlConnection conn = new NpgsqlConnection(connstring);
-                conn.Open();
-                // quite complex sql statement
-                string sql = "SELECT * FROM prod1";
-                // data adapter making request from our connection
-                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
-                ds.Reset();
-                // filling DataSet with result from NpgsqlDataAdapter
-                da.Fill(ds);
-                // since it C# DataSet can handle multiple tables, we will select first
-                dt = ds.Tables[0];
-                // connect grid to DataTable
-                dataGridView1.DataSource = dt;
-                // since we only showing the result we don't need connection anymore
-                conn.Close();
-            }
-            catch (Exception msg)
-            {
-                // something went wrong, and you wanna know why
-                MessageBox.Show(msg.ToString());
-                throw;
+                //throw;
             }
         }
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            this.button1_Click(sender, e);
+            //table_select("SELECT * FROM prod1");
             comboBox1.SelectedIndex = 0;
         }
 
         private void termék1_Click(object sender, EventArgs e)
         {
-            table_select("prod1");
+            table_select("SELECT * FROM bmw");
         }
 
         private void lakk_Click(object sender, EventArgs e)
         {
-            table_select("lakk");
+            table_select("SELECT * FROM lakk");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (queryBx.Text.Contains("SELECT"))
+                table_select(queryBx.Text);
+            else
+                MessageBox.Show("csak select utasítás hajtható végre");
+        }
+
+        private void volvo_Click(object sender, EventArgs e)
+        {
+            table_select("SELECT * from volvo");
         }
     }
 }

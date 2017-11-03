@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
+using System.Globalization;
+using System.IO;
 
 namespace CCTrace
 {
@@ -21,8 +23,8 @@ namespace CCTrace
             opener = parentForm;
         }
 
-        //jumps between controls and validates
-        private void Control_KeyUp(object sender, KeyEventArgs e)
+        
+        private void Control_KeyUp(object sender, KeyEventArgs e) //jumps between controls and validates
         {
             if ((e.KeyCode == Keys.Enter) || (e.KeyCode == Keys.Return))
             {
@@ -30,16 +32,16 @@ namespace CCTrace
             }
             updateLbl();
         }
-        //checks if txtbx is empty
-        private bool dataValid()
+        
+        private bool dataValid() //checks if txtbx is empty
         {
-            if (batchTbx.TextLength > 0 && expdateDtp.Value <= DateTime.Today)
+            if (batchTbx.TextLength > 0 && expdateDtp.Value > DateTime.Today)
                 return true;
             else
                 return false;
         }
-        //updates label based on info
-        private void updateLbl()
+        
+        private void updateLbl() //updates label based on info
         {
             if (dataValid())
             {
@@ -49,22 +51,64 @@ namespace CCTrace
             else
             {
                 outputMsgLbl.ForeColor = System.Drawing.Color.Red;
-                outputMsgLbl.Text = "Hiányos adatok!";
+                outputMsgLbl.Text = "Nem megengedett bevitel!";
             }
         }
-        //data saved in the csv
-        private string telegramMsg()
+        
+        private string telegramMsg() //data saved in the csv
         {
             return batchTbx.Text + " " + expdateDtp.Text + " " + timeStamp();
         }
-        //creates the timestamp
-        private string timeStamp()
+         
+        private void saveToFile() //saves to CSV
+        {
+            DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
+            var cal = dfi.Calendar;
+            string filePath = "D:\\ExportedData\\lakk.csv";
+            using (StreamWriter sw = File.AppendText(filePath))
+            {
+                sw.WriteLine(telegramMsg());
+            }
+        }
+        
+        private string timeStamp() //creates the timestamp
         {
             var timeStamp = DateTime.Now;
             return DateTime.Now.ToString("yyy/MM/dd HH:mm:ss");
         }
-        //exitbtn
-        private void exitBtn_Click(object sender, EventArgs e)
+
+        private string db_connect() //DB connect string
+        {
+            return String.Format("Server={0};Port={1};" +
+                    "User Id={2};Password={3};Database={4};",
+                    "localhost", "5432", "postgres",
+                    "admin", "CCDB");
+        }
+
+        private void db_insert() //DB insert
+        {
+            try
+            {
+                string connstring = db_connect();
+                // Making connection with Npgsql provider
+                var conn = new NpgsqlConnection(connstring);
+                conn.Open();
+                // building SQL query
+                var cmd = new NpgsqlCommand("INSERT INTO lakk (batch, expdate, timestamp) VALUES(:batch, :expdate, :timestamp)", conn);
+                cmd.Parameters.Add(new NpgsqlParameter("batch", batchTbx.Text));
+                cmd.Parameters.Add(new NpgsqlParameter("expdate", expdateDtp.Value));
+                cmd.Parameters.Add(new NpgsqlParameter("timestamp", timeStamp()));
+                cmd.ExecuteNonQuery();
+                //closing connection ASAP
+                conn.Close();
+            }
+            catch (Exception msg)
+            {
+                MessageBox.Show(msg.ToString());
+            }
+        }
+
+        private void exitBtn_Click(object sender, EventArgs e) //exitbtn
         {
             this.Close();
         }
@@ -74,6 +118,9 @@ namespace CCTrace
             // Set the Format type and the CustomFormat string.
             expdateDtp.Format = DateTimePickerFormat.Custom;
             expdateDtp.CustomFormat = "MM/yyyy";
+            var now = DateTime.Now;
+            var startOfMonth = new DateTime(now.Year, now.Month+1, 30);
+            expdateDtp.Value = startOfMonth;
         }
 
         private void form4_Load(object sender, EventArgs e)
@@ -83,10 +130,19 @@ namespace CCTrace
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            if (dataValid())
-            {
-
+               if (dataValid())
+                {
+                saveToFile();
+                db_insert();
+                outputMsgLbl.ForeColor = System.Drawing.Color.Green;
+                outputMsgLbl.Text = "Adatok elmentve!";
             }
+        }
+
+        private void adminPageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form3 frm = new Form3(this);
+            frm.Show();
         }
     }
 }

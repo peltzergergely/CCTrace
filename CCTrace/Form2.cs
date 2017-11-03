@@ -13,27 +13,28 @@ using System.Windows.Forms;
 using Npgsql;
 
 //This is the sample product form
-//todo: add timestamp
-//      save to string
-//      dummy output to the db
+//todo: add timestamp - done
+//      save to string - done
+//      dummy output to the db - done
+//      separate target DB based on the information from the carrier DM
 namespace CCTrace
 {
     public partial class Form2 : Form
     {
         Form opener;
-        //form opener
-        public Form2(Form parentForm) 
+        
+        public Form2(Form parentForm) //form opener
         {
             InitializeComponent();
             opener = parentForm;
         }
-        //exitBtn
-        private void button3_Click(object sender, EventArgs e)
+        
+        private void button3_Click(object sender, EventArgs e) //exitBtn
         {
             this.Close();
         }
-        //jumps between controls and validates
-        private void Control_KeyUp(object sender, KeyEventArgs e)
+       
+        private void Control_KeyUp(object sender, KeyEventArgs e)  //jumps between controls and validates
         {
             if ((e.KeyCode == Keys.Enter) || (e.KeyCode == Keys.Return))
             {
@@ -41,16 +42,16 @@ namespace CCTrace
             }
             updateLbl();
         }
-        //checks if txtbx is empty
-        private bool dataValid()
+        
+        private bool dataValid() //checks if txtbx is empty
         {
             if (prodTbx.TextLength > 0 && carrTbx.TextLength > 0)
                 return true;
             else
                 return false;
         }
-        //updates label based on info
-        private void updateLbl()
+        
+        private void updateLbl() //updates label based on info
         {
             if (dataValid())
             {
@@ -63,26 +64,26 @@ namespace CCTrace
                 outputMsgLbl.Text = "Hiányos adatok!";
             }
         }
-        //data saved in the csv
-        private string telegramMsg()
+        
+        private string telegramMsg() //data saved in the csv
         {
             return prodTbx.Text + " " + carrTbx.Text + " " + timeStamp();
         }
-        //creates the timestamp
-        private string timeStamp()
+        
+        private string timeStamp() //creates the timestamp
         {
             var timeStamp = DateTime.Now;
             return DateTime.Now.ToString("yyy/MM/dd HH:mm:ss");
         }
-        //produces a yearweek
-        private string yearAndWeek()
+        
+        private string yearAndWeek() //produces a yearweek
         {
             DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
             var cal = dfi.Calendar;
             return DateTime.Now.ToString("yyyy") + cal.GetWeekOfYear(DateTime.Now, dfi.CalendarWeekRule, dfi.FirstDayOfWeek);
         }
-        //saves to CSV
-        private void saveToFile()
+        
+        private void saveToFile() //saves to CSV
         {
             DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
             var cal = dfi.Calendar;
@@ -92,16 +93,16 @@ namespace CCTrace
                 sw.WriteLine(telegramMsg());
             }
         }
-        //DB connect string
-        private string db_connect()
+        
+        private string db_connect() //DB connect string
         {
             return String.Format("Server={0};Port={1};" +
                     "User Id={2};Password={3};Database={4};",
                     "localhost", "5432", "postgres",
                     "admin", "CCDB");
         }
-        //DB insert
-        private void db_insert()
+        
+        private void db_insert() //DB insert
         {
             try
             {
@@ -206,7 +207,7 @@ namespace CCTrace
                     outputMsgLbl.Text = "Adatok elmentve!";
                 }else if (interlocking == "something")
                 {
-                    MessageBox.Show("HIBA! kifutott valamelyik else ágra, nem kéne!");
+                    MessageBox.Show("HIBA! kifutott valamelyik else ágra, szólj az IT mérnöknek!");
                 }
             }
         }
