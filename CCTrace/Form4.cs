@@ -30,7 +30,7 @@ namespace CCTrace
             {
                 this.SelectNextControl((Control)sender, true, true, true, true);
             }
-            updateLbl();
+            updateLbl(dataValid());
         }
         
         private bool dataValid() //checks if txtbx is empty
@@ -41,17 +41,17 @@ namespace CCTrace
                 return false;
         }
         
-        private void updateLbl() //updates label based on info
+        private void updateLbl(bool valid) //updates label based on info
         {
-            if (dataValid())
+            if (valid)
             {
                 outputMsgLbl.ForeColor = System.Drawing.Color.Black;
-                outputMsgLbl.Text = telegramMsg();
+                outputMsgLbl.Text = "Az adatok megfelelőek";
             }
             else
             {
                 outputMsgLbl.ForeColor = System.Drawing.Color.Red;
-                outputMsgLbl.Text = "Nem megengedett bevitel!";
+                outputMsgLbl.Text = "Hiba: Batch szám nincs kitöltve, vagy lejárt a lakk szavatossága!";
             }
         }
         
@@ -119,7 +119,7 @@ namespace CCTrace
             expdateDtp.Format = DateTimePickerFormat.Custom;
             expdateDtp.CustomFormat = "MM/yyyy";
             var now = DateTime.Now;
-            var startOfMonth = new DateTime(now.Year, now.Month+1, 30);
+            var startOfMonth = new DateTime(now.Year, now.Month, 1);
             expdateDtp.Value = startOfMonth;
         }
 

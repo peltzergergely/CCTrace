@@ -45,7 +45,7 @@
             // 
             this.exitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitBtn.Location = new System.Drawing.Point(22, 422);
+            this.exitBtn.Location = new System.Drawing.Point(22, 599);
             this.exitBtn.Margin = new System.Windows.Forms.Padding(2);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(115, 45);
@@ -64,9 +64,9 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.22149F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.35289F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 17F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 18F));
             this.tableLayoutPanel1.Controls.Add(this.headerLbl, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.prodBtn, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.prodBtn, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.varnBtn, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.exitBtn, 1, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -78,20 +78,20 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.77779F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 486);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1330, 663);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // headerLbl
             // 
-            this.headerLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.headerLbl.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanel1.SetColumnSpan(this.headerLbl, 2);
+            this.headerLbl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.headerLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.headerLbl.ForeColor = System.Drawing.SystemColors.InfoText;
             this.headerLbl.Location = new System.Drawing.Point(141, 0);
             this.headerLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.headerLbl.Name = "headerLbl";
-            this.headerLbl.Size = new System.Drawing.Size(839, 93);
+            this.headerLbl.Size = new System.Drawing.Size(1168, 132);
             this.headerLbl.TabIndex = 4;
             this.headerLbl.Text = "Kattints a megfelelő gombra az adatok feltöltéséhez!";
             this.headerLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -99,27 +99,33 @@
             // 
             // prodBtn
             // 
-            this.prodBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.prodBtn.BackColor = System.Drawing.Color.PaleGreen;
+            this.tableLayoutPanel1.SetColumnSpan(this.prodBtn, 2);
+            this.prodBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.prodBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.prodBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prodBtn.Location = new System.Drawing.Point(186, 125);
+            this.prodBtn.Location = new System.Drawing.Point(169, 164);
             this.prodBtn.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.prodBtn.Name = "prodBtn";
-            this.prodBtn.Size = new System.Drawing.Size(335, 262);
+            this.prodBtn.Size = new System.Drawing.Size(513, 401);
             this.prodBtn.TabIndex = 5;
-            this.prodBtn.Text = "Termék";
-            this.prodBtn.UseVisualStyleBackColor = true;
+            this.prodBtn.Text = "Termék beolvasása";
+            this.prodBtn.UseVisualStyleBackColor = false;
             this.prodBtn.Click += new System.EventHandler(this.button1_Click);
             // 
             // varnBtn
             // 
+            this.varnBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.varnBtn.BackColor = System.Drawing.Color.LightYellow;
+            this.varnBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.varnBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.varnBtn.Location = new System.Drawing.Point(581, 125);
+            this.varnBtn.Location = new System.Drawing.Point(844, 233);
             this.varnBtn.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.varnBtn.Name = "varnBtn";
             this.varnBtn.Size = new System.Drawing.Size(335, 262);
             this.varnBtn.TabIndex = 6;
-            this.varnBtn.Text = "Lakk";
-            this.varnBtn.UseVisualStyleBackColor = true;
+            this.varnBtn.Text = "Lakk beolvasása";
+            this.varnBtn.UseVisualStyleBackColor = false;
             this.varnBtn.Click += new System.EventHandler(this.varnBtn_Click);
             // 
             // menuStrip1
@@ -131,7 +137,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1000, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1330, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -160,7 +166,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 510);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(1330, 687);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;

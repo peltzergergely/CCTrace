@@ -96,7 +96,7 @@ namespace CCTrace
         private void button1_Click(object sender, EventArgs e)
         {
             if (queryBx.Text.Contains("SELECT"))
-                table_select(queryBx.Text);
+                table_select(queryBx.Text);            
             else
                 MessageBox.Show("csak select utasítás hajtható végre");
         }

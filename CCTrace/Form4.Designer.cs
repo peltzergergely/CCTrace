@@ -56,7 +56,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.63636F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.Controls.Add(this.headerLbl, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.batchLbl, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.expLbl, 3, 3);
@@ -103,7 +103,7 @@
             this.batchLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.batchLbl.AutoSize = true;
             this.batchLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.batchLbl.Location = new System.Drawing.Point(452, 257);
+            this.batchLbl.Location = new System.Drawing.Point(377, 257);
             this.batchLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.batchLbl.Name = "batchLbl";
             this.batchLbl.Size = new System.Drawing.Size(143, 54);
@@ -115,7 +115,7 @@
             this.expLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.expLbl.AutoSize = true;
             this.expLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.expLbl.Location = new System.Drawing.Point(429, 322);
+            this.expLbl.Location = new System.Drawing.Point(354, 322);
             this.expLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.expLbl.Name = "expLbl";
             this.expLbl.Size = new System.Drawing.Size(166, 54);
@@ -127,7 +127,7 @@
             this.outputLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.outputLbl.AutoSize = true;
             this.outputLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.outputLbl.Location = new System.Drawing.Point(387, 428);
+            this.outputLbl.Location = new System.Drawing.Point(312, 428);
             this.outputLbl.Name = "outputLbl";
             this.outputLbl.Size = new System.Drawing.Size(207, 54);
             this.outputLbl.TabIndex = 9;
@@ -137,7 +137,7 @@
             // 
             this.exitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitBtn.Location = new System.Drawing.Point(141, 531);
+            this.exitBtn.Location = new System.Drawing.Point(49, 531);
             this.exitBtn.Margin = new System.Windows.Forms.Padding(2);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(115, 45);
@@ -150,7 +150,7 @@
             // batchTbx
             // 
             this.batchTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.batchTbx.Location = new System.Drawing.Point(599, 254);
+            this.batchTbx.Location = new System.Drawing.Point(524, 254);
             this.batchTbx.Margin = new System.Windows.Forms.Padding(2);
             this.batchTbx.Name = "batchTbx";
             this.batchTbx.Size = new System.Drawing.Size(315, 60);
@@ -162,7 +162,7 @@
             // 
             this.saveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveBtn.Location = new System.Drawing.Point(1140, 531);
+            this.saveBtn.Location = new System.Drawing.Point(1138, 531);
             this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(115, 45);
@@ -176,18 +176,17 @@
             this.outputMsgLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.outputMsgLbl.AutoSize = true;
             this.outputMsgLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.outputMsgLbl.Location = new System.Drawing.Point(600, 428);
+            this.outputMsgLbl.Location = new System.Drawing.Point(525, 428);
             this.outputMsgLbl.Name = "outputMsgLbl";
-            this.outputMsgLbl.Size = new System.Drawing.Size(288, 54);
+            this.outputMsgLbl.Size = new System.Drawing.Size(0, 54);
             this.outputMsgLbl.TabIndex = 10;
-            this.outputMsgLbl.Text = "EREDMÉNY";
             // 
             // expdateDtp
             // 
             this.expdateDtp.CustomFormat = "MM/yyyy";
             this.expdateDtp.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.expdateDtp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.expdateDtp.Location = new System.Drawing.Point(600, 319);
+            this.expdateDtp.Location = new System.Drawing.Point(525, 319);
             this.expdateDtp.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
             this.expdateDtp.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
             this.expdateDtp.Name = "expdateDtp";
@@ -204,7 +203,7 @@
             this.segítségToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(20, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(238, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(146, 24);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -219,7 +218,7 @@
             // adminPageToolStripMenuItem
             // 
             this.adminPageToolStripMenuItem.Name = "adminPageToolStripMenuItem";
-            this.adminPageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.adminPageToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.adminPageToolStripMenuItem.Text = "AdminPage";
             this.adminPageToolStripMenuItem.Click += new System.EventHandler(this.adminPageToolStripMenuItem_Click);
             // 

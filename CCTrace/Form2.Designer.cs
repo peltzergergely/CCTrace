@@ -48,11 +48,13 @@
             // 
             // prodTbx
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.prodTbx, 2);
+            this.prodTbx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.prodTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prodTbx.Location = new System.Drawing.Point(539, 246);
+            this.prodTbx.Location = new System.Drawing.Point(418, 246);
             this.prodTbx.Margin = new System.Windows.Forms.Padding(2);
             this.prodTbx.Name = "prodTbx";
-            this.prodTbx.Size = new System.Drawing.Size(464, 60);
+            this.prodTbx.Size = new System.Drawing.Size(877, 60);
             this.prodTbx.TabIndex = 0;
             this.prodTbx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.prodTbx.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
@@ -64,17 +66,17 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 28.36364F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.63636F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.23289F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 3.472932F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel1.Controls.Add(this.headerLbl, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.prodLbl, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.carrLbl, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.prodLbl, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.carrLbl, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.outputLbl, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.exitBtn, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.carrTbx, 4, 3);
-            this.tableLayoutPanel1.Controls.Add(this.prodTbx, 4, 2);
+            this.tableLayoutPanel1.Controls.Add(this.carrTbx, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.prodTbx, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.saveBtn, 6, 6);
             this.tableLayoutPanel1.Controls.Add(this.outputMsgLbl, 4, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -113,7 +115,7 @@
             this.prodLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.prodLbl.AutoSize = true;
             this.prodLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prodLbl.Location = new System.Drawing.Point(339, 249);
+            this.prodLbl.Location = new System.Drawing.Point(218, 249);
             this.prodLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.prodLbl.Name = "prodLbl";
             this.prodLbl.Size = new System.Drawing.Size(196, 54);
@@ -125,7 +127,7 @@
             this.carrLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.carrLbl.AutoSize = true;
             this.carrLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.carrLbl.Location = new System.Drawing.Point(387, 313);
+            this.carrLbl.Location = new System.Drawing.Point(266, 313);
             this.carrLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.carrLbl.Name = "carrLbl";
             this.carrLbl.Size = new System.Drawing.Size(148, 54);
@@ -137,7 +139,7 @@
             this.outputLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.outputLbl.AutoSize = true;
             this.outputLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.outputLbl.Location = new System.Drawing.Point(327, 515);
+            this.outputLbl.Location = new System.Drawing.Point(419, 515);
             this.outputLbl.Name = "outputLbl";
             this.outputLbl.Size = new System.Drawing.Size(207, 54);
             this.outputLbl.TabIndex = 9;
@@ -159,11 +161,13 @@
             // 
             // carrTbx
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.carrTbx, 2);
+            this.carrTbx.Dock = System.Windows.Forms.DockStyle.Fill;
             this.carrTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.carrTbx.Location = new System.Drawing.Point(539, 310);
+            this.carrTbx.Location = new System.Drawing.Point(418, 310);
             this.carrTbx.Margin = new System.Windows.Forms.Padding(2);
             this.carrTbx.Name = "carrTbx";
-            this.carrTbx.Size = new System.Drawing.Size(464, 60);
+            this.carrTbx.Size = new System.Drawing.Size(877, 60);
             this.carrTbx.TabIndex = 1;
             this.carrTbx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.carrTbx.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
@@ -172,7 +176,7 @@
             // 
             this.saveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveBtn.Location = new System.Drawing.Point(1334, 715);
+            this.saveBtn.Location = new System.Drawing.Point(1333, 715);
             this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(115, 45);
@@ -180,17 +184,17 @@
             this.saveBtn.Text = "Mentés";
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            this.saveBtn.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Control_KeyUp);
             // 
             // outputMsgLbl
             // 
             this.outputMsgLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.outputMsgLbl.AutoSize = true;
             this.outputMsgLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.outputMsgLbl.Location = new System.Drawing.Point(540, 515);
+            this.outputMsgLbl.Location = new System.Drawing.Point(632, 515);
             this.outputMsgLbl.Name = "outputMsgLbl";
-            this.outputMsgLbl.Size = new System.Drawing.Size(288, 54);
+            this.outputMsgLbl.Size = new System.Drawing.Size(0, 54);
             this.outputMsgLbl.TabIndex = 10;
-            this.outputMsgLbl.Text = "EREDMÉNY";
             // 
             // beállításokToolStripMenuItem
             // 

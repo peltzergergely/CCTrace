@@ -39,29 +39,32 @@ namespace CCTrace
             if ((e.KeyCode == Keys.Enter) || (e.KeyCode == Keys.Return))
             {
                 this.SelectNextControl((Control)sender, true, true, true, true);
-            }
-            updateLbl();
+                if (ActiveControl == saveBtn)
+                    updateLbl(sender, e);
+            }    
         }
         
-        private bool dataValid() //checks if txtbx is empty
+        private bool dataValid() //checks if txtbx values are legit
         {
-            if (prodTbx.TextLength > 0 && carrTbx.TextLength > 0)
+            if (prodTbx.TextLength > 23 && carrTbx.TextLength > 17 && (carrTbx.Text.Contains("BMW") || carrTbx.Text.Contains("VOLVO")))
                 return true;
             else
                 return false;
         }
         
-        private void updateLbl() //updates label based on info
+        private void updateLbl(object sender, EventArgs e) //updates label based on info
         {
             if (dataValid())
             {
                 outputMsgLbl.ForeColor = System.Drawing.Color.Black;
-                outputMsgLbl.Text = telegramMsg();
+                //outputMsgLbl.Text = "Az adatok megfelelőek kattints a mentés gombra!";
+                saveBtn_Click(sender, e);
+
             }
             else
             {
                 outputMsgLbl.ForeColor = System.Drawing.Color.Red;
-                outputMsgLbl.Text = "Hiányos adatok!";
+                outputMsgLbl.Text = "Nem megfelelő adatok!";
             }
         }
         
@@ -102,7 +105,7 @@ namespace CCTrace
                     "admin", "CCDB");
         }
         
-        private void db_insert() //DB insert
+        private void db_insert(string table) //DB insert
         {
             try
             {
@@ -111,9 +114,9 @@ namespace CCTrace
                 var conn = new NpgsqlConnection(connstring);
                 conn.Open();
                 // building SQL query
-                var cmd = new NpgsqlCommand("INSERT INTO prod1 (prod_DM, carr_DM, timestamp) VALUES(:prod_DM, :carr_DM, :timestamp)", conn);
-                cmd.Parameters.Add(new NpgsqlParameter("prod_DM", prodTbx.Text));
-                cmd.Parameters.Add(new NpgsqlParameter("carr_DM", carrTbx.Text));
+                var cmd = new NpgsqlCommand("INSERT INTO " + table + " (prod_dm, carr_dm, timestamp) VALUES(:prod_dm, :carr_dm, :timestamp)", conn);
+                cmd.Parameters.Add(new NpgsqlParameter("prod_dm", prodTbx.Text));
+                cmd.Parameters.Add(new NpgsqlParameter("carr_dm", carrTbx.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("timestamp", timeStamp()));
                 cmd.ExecuteNonQuery();
                 //closing connection ASAP
@@ -130,7 +133,7 @@ namespace CCTrace
         //B - product second time but with BOT - query 1 result / no result?
         //C - product goes in again with TOP - ERROR BOT NEEDS TO BE DONE
         //D - product goes in again with BOT - ERROR PRODUCT IS FINISHED
-        private string interlock()
+        private string interlock(string table)
         {
             try
             {
@@ -139,9 +142,9 @@ namespace CCTrace
                 var conn = new NpgsqlConnection(connstring);
                 conn.Open();
                 // building query
-                var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM prod1 WHERE prod_dm = :prod_dm" , conn);
+                var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM " + table + " WHERE prod_dm = :prod_dm" , conn);
                 cmd.Parameters.Add(new NpgsqlParameter("prod_dm", prodTbx.Text));
-                cmd.Parameters.Add(new NpgsqlParameter("carr_DM", carrTbx.Text));
+                cmd.Parameters.Add(new NpgsqlParameter("carr_dm", carrTbx.Text));
                 Int32 count = Convert.ToInt32( cmd.ExecuteScalar());
                 conn.Close();
                 if (count == 0)
@@ -155,9 +158,9 @@ namespace CCTrace
                 else if (count == 1)
                 {
                     conn.Open();
-                    cmd = new NpgsqlCommand("SELECT COUNT(*) FROM prod1 WHERE prod_dm = :prod_dm AND carr_dm = :carr_dm ", conn);
+                    cmd = new NpgsqlCommand("SELECT COUNT(*) FROM " + table + " WHERE prod_dm = :prod_dm AND carr_dm = :carr_dm ", conn);
                     cmd.Parameters.Add(new NpgsqlParameter("prod_dm", prodTbx.Text));
-                    cmd.Parameters.Add(new NpgsqlParameter("carr_DM", carrTbx.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("carr_dm", carrTbx.Text));
                     Int32 count2 = Convert.ToInt32(cmd.ExecuteScalar());
                     conn.Close();
                     if (count2 == 1)
@@ -173,7 +176,7 @@ namespace CCTrace
                         outputMsgLbl.ForeColor = System.Drawing.Color.Black;
                         return "pass";
                     }
-                    else return "something";
+                    else return "error";
 
                 }else if (count == 2)
                 {
@@ -182,13 +185,21 @@ namespace CCTrace
                     outputMsgLbl.Text = "Ennek a terméknek mindkét oldala lakkozott!";
                     return "error";
                 }
-                else return "something";
+                else return "error";
             }
             catch (Exception msg)
             {
                 MessageBox.Show(msg.ToString());
-                throw;
+                return "error";
             }
+        }
+
+        private string returnTableName()
+        {
+            if (carrTbx.Text.Contains("BMW"))
+                return "bmw";
+            else
+                return "volvo";
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
@@ -197,17 +208,19 @@ namespace CCTrace
             //update window with large label stating if this product have to be removed or proceed to other side
             if (dataValid())
             {
-                string interlocking = interlock();
+                string interlocking = interlock(returnTableName());
                 if (interlocking == "pass")
                 {
                     saveToFile();
                     //check if product has been already read
-                    db_insert();
+                    db_insert(returnTableName());
                     outputMsgLbl.ForeColor = System.Drawing.Color.Green;
-                    outputMsgLbl.Text = "Adatok elmentve!";
-                }else if (interlocking == "something")
-                {
-                    MessageBox.Show("HIBA! kifutott valamelyik else ágra, szólj az IT mérnöknek!");
+                    outputMsgLbl.Text = "Adatok elmentve!" + "\r\n " + prodTbx.Text + "\r\n" + carrTbx.Text;
+                    carrTbx.Text = "";
+                    prodTbx.Text = "";
+                    prodTbx.Focus();
+                    prodTbx.SelectAll();
+                    
                 }
             }
         }
