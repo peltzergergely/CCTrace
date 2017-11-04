@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Npgsql;
+//using Npgsql;
 
 //This is the sample product form
 //todo: add timestamp - done
@@ -70,22 +70,9 @@ namespace CCTrace
         
         private string telegramMsg() //data saved in the csv
         {
-            return prodTbx.Text + " " + carrTbx.Text + " " + timeStamp();
+            return prodTbx.Text + " " + carrTbx.Text + " " + DateTime.Now;
         }
-        
-        private string timeStamp() //creates the timestamp
-        {
-            var timeStamp = DateTime.Now;
-            return DateTime.Now.ToString("yyy/MM/dd HH:mm:ss");
-        }
-        
-        private string yearAndWeek() //produces a yearweek
-        {
-            DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
-            var cal = dfi.Calendar;
-            return DateTime.Now.ToString("yyyy") + cal.GetWeekOfYear(DateTime.Now, dfi.CalendarWeekRule, dfi.FirstDayOfWeek);
-        }
-        
+                        
         private void saveToFile() //saves to CSV
         {
             DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
@@ -117,7 +104,7 @@ namespace CCTrace
                 var cmd = new NpgsqlCommand("INSERT INTO " + table + " (prod_dm, carr_dm, timestamp) VALUES(:prod_dm, :carr_dm, :timestamp)", conn);
                 cmd.Parameters.Add(new NpgsqlParameter("prod_dm", prodTbx.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("carr_dm", carrTbx.Text));
-                cmd.Parameters.Add(new NpgsqlParameter("timestamp", timeStamp()));
+                cmd.Parameters.Add(new NpgsqlParameter("timestamp", DateTime.Now));
                 cmd.ExecuteNonQuery();
                 //closing connection ASAP
                 conn.Close();

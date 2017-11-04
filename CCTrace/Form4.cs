@@ -57,7 +57,7 @@ namespace CCTrace
         
         private string telegramMsg() //data saved in the csv
         {
-            return batchTbx.Text + " " + expdateDtp.Text + " " + timeStamp();
+            return batchTbx.Text + " " + expdateDtp.Text + " " + DateTime.Now;
         }
          
         private void saveToFile() //saves to CSV
@@ -71,12 +71,6 @@ namespace CCTrace
             }
         }
         
-        private string timeStamp() //creates the timestamp
-        {
-            var timeStamp = DateTime.Now;
-            return DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
-        }
-
         private string db_connect() //DB connect string
         {
             return String.Format("Server={0};Port={1};" +
