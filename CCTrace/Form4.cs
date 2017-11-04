@@ -64,7 +64,7 @@ namespace CCTrace
         {
             DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
             var cal = dfi.Calendar;
-            string filePath = "D:\\ExportedData\\lakk.csv";
+            string filePath = "D:\\coding\\ExportedData\\lakk.csv";
             using (StreamWriter sw = File.AppendText(filePath))
             {
                 sw.WriteLine(telegramMsg());
@@ -74,7 +74,7 @@ namespace CCTrace
         private string timeStamp() //creates the timestamp
         {
             var timeStamp = DateTime.Now;
-            return DateTime.Now.ToString("yyy/MM/dd HH:mm:ss");
+            return DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
         }
 
         private string db_connect() //DB connect string
@@ -97,7 +97,7 @@ namespace CCTrace
                 var cmd = new NpgsqlCommand("INSERT INTO lakk (batch, expdate, timestamp) VALUES(:batch, :expdate, :timestamp)", conn);
                 cmd.Parameters.Add(new NpgsqlParameter("batch", batchTbx.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("expdate", expdateDtp.Value));
-                cmd.Parameters.Add(new NpgsqlParameter("timestamp", timeStamp()));
+                cmd.Parameters.Add(new NpgsqlParameter("timestamp", DateTime.Now));
                 cmd.ExecuteNonQuery();
                 //closing connection ASAP
                 conn.Close();
@@ -136,6 +136,7 @@ namespace CCTrace
                 db_insert();
                 outputMsgLbl.ForeColor = System.Drawing.Color.Green;
                 outputMsgLbl.Text = "Adatok elmentve!";
+                MessageBox.Show("Adatok elmentve!");
             }
         }
 
