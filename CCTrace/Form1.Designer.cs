@@ -36,7 +36,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.beállításokToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.segítségToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +63,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.22149F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.35289F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 18F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.headerLbl, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.prodBtn, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.varnBtn, 4, 1);
@@ -91,7 +90,7 @@
             this.headerLbl.Location = new System.Drawing.Point(141, 0);
             this.headerLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.headerLbl.Name = "headerLbl";
-            this.headerLbl.Size = new System.Drawing.Size(1168, 132);
+            this.headerLbl.Size = new System.Drawing.Size(1166, 132);
             this.headerLbl.TabIndex = 4;
             this.headerLbl.Text = "Kattints a megfelelő gombra az adatok feltöltéséhez!";
             this.headerLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -99,15 +98,15 @@
             // 
             // prodBtn
             // 
+            this.prodBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.prodBtn.BackColor = System.Drawing.Color.PaleGreen;
             this.tableLayoutPanel1.SetColumnSpan(this.prodBtn, 2);
             this.prodBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.prodBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.prodBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prodBtn.Location = new System.Drawing.Point(169, 164);
+            this.prodBtn.Location = new System.Drawing.Point(248, 164);
             this.prodBtn.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.prodBtn.Name = "prodBtn";
-            this.prodBtn.Size = new System.Drawing.Size(513, 401);
+            this.prodBtn.Size = new System.Drawing.Size(433, 349);
             this.prodBtn.TabIndex = 5;
             this.prodBtn.Text = "Termék beolvasása";
             this.prodBtn.UseVisualStyleBackColor = false;
@@ -115,14 +114,13 @@
             // 
             // varnBtn
             // 
-            this.varnBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.varnBtn.BackColor = System.Drawing.Color.LightYellow;
             this.varnBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.varnBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.varnBtn.Location = new System.Drawing.Point(844, 233);
+            this.varnBtn.Location = new System.Drawing.Point(741, 164);
             this.varnBtn.Margin = new System.Windows.Forms.Padding(30, 32, 30, 32);
             this.varnBtn.Name = "varnBtn";
-            this.varnBtn.Size = new System.Drawing.Size(335, 262);
+            this.varnBtn.Size = new System.Drawing.Size(396, 304);
             this.varnBtn.TabIndex = 6;
             this.varnBtn.Text = "Lakk beolvasása";
             this.varnBtn.UseVisualStyleBackColor = false;
@@ -132,8 +130,7 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.beállításokToolStripMenuItem,
-            this.segítségToolStripMenuItem});
+            this.beállításokToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -146,21 +143,15 @@
             this.beállításokToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.adminPageToolStripMenuItem});
             this.beállításokToolStripMenuItem.Name = "beállításokToolStripMenuItem";
-            this.beállításokToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
-            this.beállításokToolStripMenuItem.Text = "Beállítások";
+            this.beállításokToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.beállításokToolStripMenuItem.Text = "Adatbázis";
             // 
             // adminPageToolStripMenuItem
             // 
             this.adminPageToolStripMenuItem.Name = "adminPageToolStripMenuItem";
-            this.adminPageToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.adminPageToolStripMenuItem.Text = "AdminPage";
+            this.adminPageToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
+            this.adminPageToolStripMenuItem.Text = "Megnyitás";
             this.adminPageToolStripMenuItem.Click += new System.EventHandler(this.adminPageToolStripMenuItem_Click);
-            // 
-            // segítségToolStripMenuItem
-            // 
-            this.segítségToolStripMenuItem.Name = "segítségToolStripMenuItem";
-            this.segítségToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.segítségToolStripMenuItem.Text = "Segítség";
             // 
             // MainScr
             // 
@@ -194,7 +185,6 @@
         private System.Windows.Forms.Button varnBtn;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem beállításokToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem segítségToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adminPageToolStripMenuItem;
     }
 }

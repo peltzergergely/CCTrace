@@ -10,13 +10,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using Npgsql;
+using Npgsql;
 
 //This is the sample product form
 //todo: add timestamp - done
 //      save to string - done
 //      dummy output to the db - done
-//      separate target DB based on the information from the carrier DM
+//      separate target DB based on the information from the carrier DM - done
 namespace CCTrace
 {
     public partial class Form2 : Form
@@ -78,10 +78,19 @@ namespace CCTrace
             DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
             var cal = dfi.Calendar;
             string filePath = "D:\\coding\\exportedData\\prod1.csv";
-            using (StreamWriter sw = File.AppendText(filePath))
+            try
             {
-                sw.WriteLine(telegramMsg());
+                using (StreamWriter sw = File.AppendText(filePath))
+                {
+                    sw.WriteLine(telegramMsg());
+                }
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
         
         private string db_connect() //DB connect string
@@ -124,53 +133,57 @@ namespace CCTrace
         {
             try
             {
-                string connstring = db_connect();
-                // Making connection
-                var conn = new NpgsqlConnection(connstring);
-                conn.Open();
-                // building query
-                var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM " + table + " WHERE prod_dm = :prod_dm" , conn);
-                cmd.Parameters.Add(new NpgsqlParameter("prod_dm", prodTbx.Text));
-                cmd.Parameters.Add(new NpgsqlParameter("carr_dm", carrTbx.Text));
-                Int32 count = Convert.ToInt32( cmd.ExecuteScalar());
-                conn.Close();
-                if (count == 0)
+                if (table != "Hiba, nem megfelelő adat!")
                 {
-                    outputLbl.Text = "Kimenet: ";
-                    outputMsgLbl.ForeColor = System.Drawing.Color.Black;
-                    return "pass";
-                }
-                
-                //mar van egy talalat akkor megnezem, hogy ezzel az oldallal szerepel-e, ha nem akkor ez BOTTOM OLDAL
-                else if (count == 1)
-                {
+                    string connstring = db_connect();
+                    // Making connection
+                    var conn = new NpgsqlConnection(connstring);
                     conn.Open();
-                    cmd = new NpgsqlCommand("SELECT COUNT(*) FROM " + table + " WHERE prod_dm = :prod_dm AND carr_dm = :carr_dm ", conn);
+                    // building query
+                    var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM " + table + " WHERE prod_dm = :prod_dm", conn);
                     cmd.Parameters.Add(new NpgsqlParameter("prod_dm", prodTbx.Text));
-                    cmd.Parameters.Add(new NpgsqlParameter("carr_dm", carrTbx.Text));
-                    Int32 count2 = Convert.ToInt32(cmd.ExecuteScalar());
+                    Int32 count = Convert.ToInt32(cmd.ExecuteScalar());
                     conn.Close();
-                    if (count2 == 1)
-                    {
-                        outputLbl.Text = "HIBA!";
-                        outputMsgLbl.ForeColor = System.Drawing.Color.Red;
-                        outputMsgLbl.Text = "Ennek a terméknek ez a fele már lakkozott!";
-                        return "error";
-                    }
-                    else if (count2 == 0)
+                    if (count == 0)
                     {
                         outputLbl.Text = "Kimenet: ";
                         outputMsgLbl.ForeColor = System.Drawing.Color.Black;
                         return "pass";
                     }
-                    else return "error";
 
-                }else if (count == 2)
-                {
-                    outputLbl.Text = "HIBA!";
-                    outputMsgLbl.ForeColor = System.Drawing.Color.Red;
-                    outputMsgLbl.Text = "Ennek a terméknek mindkét oldala lakkozott!";
-                    return "error";
+                    //mar van egy talalat akkor megnezem, hogy ezzel az oldallal szerepel-e, ha nem akkor ez BOTTOM OLDAL
+                    else if (count == 1)
+                    {
+                        conn.Open();
+                        cmd = new NpgsqlCommand("SELECT COUNT(*) FROM " + table + " WHERE prod_dm = :prod_dm AND carr_dm = :carr_dm ", conn);
+                        cmd.Parameters.Add(new NpgsqlParameter("prod_dm", prodTbx.Text));
+                        cmd.Parameters.Add(new NpgsqlParameter("carr_dm", carrTbx.Text));
+                        Int32 count2 = Convert.ToInt32(cmd.ExecuteScalar());
+                        conn.Close();
+                        if (count2 == 1)
+                        {
+                            outputLbl.Text = "HIBA!";
+                            outputMsgLbl.ForeColor = System.Drawing.Color.Red;
+                            outputMsgLbl.Text = "Ennek a terméknek ez a fele már lakkozott!";
+                            return "error";
+                        }
+                        else if (count2 == 0)
+                        {
+                            outputLbl.Text = "Kimenet: ";
+                            outputMsgLbl.ForeColor = System.Drawing.Color.Black;
+                            return "pass";
+                        }
+                        else return "error";
+
+                    }
+                    else if (count == 2)
+                    {
+                        outputLbl.Text = "HIBA!";
+                        outputMsgLbl.ForeColor = System.Drawing.Color.Red;
+                        outputMsgLbl.Text = "Ennek a terméknek mindkét oldala lakkozott!";
+                        return "error";
+                    }
+                    else return "error";
                 }
                 else return "error";
             }
@@ -185,8 +198,10 @@ namespace CCTrace
         {
             if (carrTbx.Text.Contains("BMW"))
                 return "bmw";
-            else
+            else if (carrTbx.Text.Contains("VOLVO"))
                 return "volvo";
+            else
+                return "Hiba, nem megfelelő adat!";
         }
 
         private void saveBtn_Click(object sender, EventArgs e)

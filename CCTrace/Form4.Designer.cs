@@ -41,7 +41,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.beállításokToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.segítségToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +55,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.63636F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.Controls.Add(this.headerLbl, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.batchLbl, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.expLbl, 3, 3);
@@ -66,7 +65,7 @@
             this.tableLayoutPanel1.Controls.Add(this.saveBtn, 6, 6);
             this.tableLayoutPanel1.Controls.Add(this.outputMsgLbl, 4, 4);
             this.tableLayoutPanel1.Controls.Add(this.expdateDtp, 4, 3);
-            this.tableLayoutPanel1.Controls.Add(this.menuStrip1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.menuStrip1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
@@ -103,7 +102,7 @@
             this.batchLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.batchLbl.AutoSize = true;
             this.batchLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.batchLbl.Location = new System.Drawing.Point(377, 257);
+            this.batchLbl.Location = new System.Drawing.Point(355, 257);
             this.batchLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.batchLbl.Name = "batchLbl";
             this.batchLbl.Size = new System.Drawing.Size(143, 54);
@@ -115,7 +114,7 @@
             this.expLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.expLbl.AutoSize = true;
             this.expLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.expLbl.Location = new System.Drawing.Point(354, 322);
+            this.expLbl.Location = new System.Drawing.Point(332, 322);
             this.expLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.expLbl.Name = "expLbl";
             this.expLbl.Size = new System.Drawing.Size(166, 54);
@@ -127,7 +126,7 @@
             this.outputLbl.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.outputLbl.AutoSize = true;
             this.outputLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.outputLbl.Location = new System.Drawing.Point(312, 428);
+            this.outputLbl.Location = new System.Drawing.Point(290, 428);
             this.outputLbl.Name = "outputLbl";
             this.outputLbl.Size = new System.Drawing.Size(207, 54);
             this.outputLbl.TabIndex = 9;
@@ -137,7 +136,7 @@
             // 
             this.exitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.exitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitBtn.Location = new System.Drawing.Point(49, 531);
+            this.exitBtn.Location = new System.Drawing.Point(22, 531);
             this.exitBtn.Margin = new System.Windows.Forms.Padding(2);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(115, 45);
@@ -150,7 +149,7 @@
             // batchTbx
             // 
             this.batchTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.batchTbx.Location = new System.Drawing.Point(524, 254);
+            this.batchTbx.Location = new System.Drawing.Point(502, 254);
             this.batchTbx.Margin = new System.Windows.Forms.Padding(2);
             this.batchTbx.Name = "batchTbx";
             this.batchTbx.Size = new System.Drawing.Size(315, 60);
@@ -162,7 +161,7 @@
             // 
             this.saveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveBtn.Location = new System.Drawing.Point(1138, 531);
+            this.saveBtn.Location = new System.Drawing.Point(1137, 531);
             this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(115, 45);
@@ -176,7 +175,7 @@
             this.outputMsgLbl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.outputMsgLbl.AutoSize = true;
             this.outputMsgLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.outputMsgLbl.Location = new System.Drawing.Point(525, 428);
+            this.outputMsgLbl.Location = new System.Drawing.Point(503, 428);
             this.outputMsgLbl.Name = "outputMsgLbl";
             this.outputMsgLbl.Size = new System.Drawing.Size(0, 54);
             this.outputMsgLbl.TabIndex = 10;
@@ -186,7 +185,7 @@
             this.expdateDtp.CustomFormat = "MM/yyyy";
             this.expdateDtp.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.expdateDtp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.expdateDtp.Location = new System.Drawing.Point(525, 319);
+            this.expdateDtp.Location = new System.Drawing.Point(503, 319);
             this.expdateDtp.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
             this.expdateDtp.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
             this.expdateDtp.Name = "expdateDtp";
@@ -198,12 +197,12 @@
             // 
             // menuStrip1
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.menuStrip1, 10);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.beállításokToolStripMenuItem,
-            this.segítségToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(20, 0);
+            this.beállításokToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(146, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1285, 24);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -212,21 +211,15 @@
             this.beállításokToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.adminPageToolStripMenuItem});
             this.beállításokToolStripMenuItem.Name = "beállításokToolStripMenuItem";
-            this.beállításokToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
-            this.beállításokToolStripMenuItem.Text = "Beállítások";
+            this.beállításokToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.beállításokToolStripMenuItem.Text = "Adatbázis";
             // 
             // adminPageToolStripMenuItem
             // 
             this.adminPageToolStripMenuItem.Name = "adminPageToolStripMenuItem";
-            this.adminPageToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.adminPageToolStripMenuItem.Text = "AdminPage";
+            this.adminPageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.adminPageToolStripMenuItem.Text = "Megnyitás";
             this.adminPageToolStripMenuItem.Click += new System.EventHandler(this.adminPageToolStripMenuItem_Click);
-            // 
-            // segítségToolStripMenuItem
-            // 
-            this.segítségToolStripMenuItem.Name = "segítségToolStripMenuItem";
-            this.segítségToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.segítségToolStripMenuItem.Text = "Segítség";
             // 
             // form4
             // 
@@ -263,6 +256,5 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem beállításokToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adminPageToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem segítségToolStripMenuItem;
     }
 }

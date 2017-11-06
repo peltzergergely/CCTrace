@@ -51,3 +51,7 @@ D:\Coding\VS2017\source\repos\CCTrace\CCTrace\obj\Debug\CCTrace.csproj.GenerateR
 D:\Coding\VS2017\source\repos\CCTrace\CCTrace\obj\Debug\CCTrace.csproj.CoreCompileInputs.cache
 D:\Coding\VS2017\source\repos\CCTrace\CCTrace\obj\Debug\CCTrace.exe
 D:\Coding\VS2017\source\repos\CCTrace\CCTrace\obj\Debug\CCTrace.pdb
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Debug\Npgsql.xml
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.Form5.resources

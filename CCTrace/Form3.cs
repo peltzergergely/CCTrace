@@ -79,13 +79,18 @@ namespace CCTrace
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            //table_select("SELECT * FROM prod1");
+            //table_select("SELECT * FROM bmw AND volvo");
             comboBox1.SelectedIndex = 0;
         }
 
         private void termék1_Click(object sender, EventArgs e)
         {
             table_select("SELECT * FROM bmw");
+        }
+
+        private void volvo_Click(object sender, EventArgs e)
+        {
+            table_select("SELECT * from volvo");
         }
 
         private void lakk_Click(object sender, EventArgs e)
@@ -95,15 +100,10 @@ namespace CCTrace
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (queryBx.Text.Contains("SELECT"))
+            if (pwBx.Text.Contains("admin"))
                 table_select(queryBx.Text);            
             else
-                MessageBox.Show("csak select utasítás hajtható végre");
-        }
-
-        private void volvo_Click(object sender, EventArgs e)
-        {
-            table_select("SELECT * from volvo");
+                MessageBox.Show("Ez a művelethez jelszó kell!");
         }
     }
 }

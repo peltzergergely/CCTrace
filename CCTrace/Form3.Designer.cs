@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -40,19 +39,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.volvo = new System.Windows.Forms.Button();
-            this.simpletableBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cCDBDataSet = new CCTrace.CCDBDataSet();
-            this.simple_tableTableAdapter = new CCTrace.CCDBDataSetTableAdapters.simple_tableTableAdapter();
-            this.ccdbDataSet1 = new CCTrace.CCDBDataSet();
-            this.cCDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cCDBDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.pwBx = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.simpletableBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cCDBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ccdbDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cCDBDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cCDBDataSetBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -67,6 +57,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel1.Controls.Add(this.label2, 5, 1);
+            this.tableLayoutPanel1.Controls.Add(this.pwBx, 5, 2);
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.termék1, 1, 2);
@@ -93,15 +85,15 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.label1, 6);
+            this.tableLayoutPanel1.SetColumnSpan(this.label1, 4);
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(40, 20);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1216, 31);
+            this.label1.Size = new System.Drawing.Size(533, 31);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Adatbázis kapcsolat tesztelés";
+            this.label1.Text = "Adatok megtekintése";
             // 
             // dataGridView1
             // 
@@ -113,14 +105,14 @@
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 6);
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Location = new System.Drawing.Point(40, 86);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
@@ -209,34 +201,26 @@
             this.volvo.UseVisualStyleBackColor = true;
             this.volvo.Click += new System.EventHandler(this.volvo_Click);
             // 
-            // simpletableBindingSource
+            // pwBx
             // 
-            this.simpletableBindingSource.DataMember = "simple_table";
-            this.simpletableBindingSource.DataSource = this.cCDBDataSet;
+            this.pwBx.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pwBx.Location = new System.Drawing.Point(578, 54);
+            this.pwBx.Name = "pwBx";
+            this.pwBx.PasswordChar = '*';
+            this.pwBx.Size = new System.Drawing.Size(156, 23);
+            this.pwBx.TabIndex = 12;
             // 
-            // cCDBDataSet
+            // label2
             // 
-            this.cCDBDataSet.DataSetName = "CCDBDataSet";
-            this.cCDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // simple_tableTableAdapter
-            // 
-            this.simple_tableTableAdapter.ClearBeforeFill = true;
-            // 
-            // ccdbDataSet1
-            // 
-            this.ccdbDataSet1.DataSetName = "CCDBDataSet";
-            this.ccdbDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // cCDBDataSetBindingSource
-            // 
-            this.cCDBDataSetBindingSource.DataSource = this.cCDBDataSet;
-            this.cCDBDataSetBindingSource.Position = 0;
-            // 
-            // cCDBDataSetBindingSource1
-            // 
-            this.cCDBDataSetBindingSource1.DataSource = this.cCDBDataSet;
-            this.cCDBDataSetBindingSource1.Position = 0;
+            this.tableLayoutPanel1.SetColumnSpan(this.label2, 2);
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(577, 20);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(679, 31);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "lekérdezések indításához írd be a jelszót";
             // 
             // Form3
             // 
@@ -252,11 +236,6 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.simpletableBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cCDBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ccdbDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cCDBDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cCDBDataSetBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -267,17 +246,13 @@
         private System.Windows.Forms.Button exitBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
-        private CCDBDataSet cCDBDataSet;
-        private System.Windows.Forms.BindingSource simpletableBindingSource;
-        private CCDBDataSetTableAdapters.simple_tableTableAdapter simple_tableTableAdapter;
-        private CCDBDataSet ccdbDataSet1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button termék1;
         private System.Windows.Forms.Button lakk;
         private System.Windows.Forms.TextBox queryBx;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.BindingSource cCDBDataSetBindingSource1;
-        private System.Windows.Forms.BindingSource cCDBDataSetBindingSource;
         private System.Windows.Forms.Button volvo;
+        private System.Windows.Forms.TextBox pwBx;
+        private System.Windows.Forms.Label label2;
     }
 }
