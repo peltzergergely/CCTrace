@@ -64,7 +64,7 @@ namespace CCTrace
         {
             DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
             var cal = dfi.Calendar;
-            string filePath = "D:\\coding\\ExportedData\\lakk.csv";
+            string filePath = ".\\lakk.csv";
             using (StreamWriter sw = File.AppendText(filePath))
             {
                 sw.WriteLine(telegramMsg());

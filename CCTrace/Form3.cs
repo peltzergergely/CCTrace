@@ -53,12 +53,12 @@ namespace CCTrace
                 // PostgeSQL-style connection string
                 string connstring = db_connect();
                 // Making connection with Npgsql provider
-                NpgsqlConnection conn = new NpgsqlConnection(connstring);
+                var conn = new NpgsqlConnection(connstring);
                 conn.Open();
                 // quite complex sql statement
                 string sql = query;
                 // data adapter making request from our connection
-                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
+                var da = new NpgsqlDataAdapter(sql, conn);
                 ds.Reset();
                 // filling DataSet with result from NpgsqlDataAdapter
                 da.Fill(ds);

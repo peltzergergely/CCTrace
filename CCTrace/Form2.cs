@@ -22,18 +22,18 @@ namespace CCTrace
     public partial class Form2 : Form
     {
         Form opener;
-        
+
         public Form2(Form parentForm) //form opener
         {
             InitializeComponent();
             opener = parentForm;
         }
-        
+
         private void button3_Click(object sender, EventArgs e) //exitBtn
         {
             this.Close();
         }
-       
+
         private void Control_KeyUp(object sender, KeyEventArgs e)  //jumps between controls and validates
         {
             if ((e.KeyCode == Keys.Enter) || (e.KeyCode == Keys.Return))
@@ -41,9 +41,9 @@ namespace CCTrace
                 this.SelectNextControl((Control)sender, true, true, true, true);
                 if (ActiveControl == saveBtn)
                     updateLbl(sender, e);
-            }    
+            }
         }
-        
+
         private bool dataValid() //checks if txtbx values are legit
         {
             if (prodTbx.TextLength > 23 && carrTbx.TextLength > 17 && (carrTbx.Text.Contains("BMW") || carrTbx.Text.Contains("VOLVO")))
@@ -51,7 +51,7 @@ namespace CCTrace
             else
                 return false;
         }
-        
+
         private void updateLbl(object sender, EventArgs e) //updates label based on info
         {
             if (dataValid())
@@ -67,17 +67,17 @@ namespace CCTrace
                 outputMsgLbl.Text = "Nem megfelelő adatok!";
             }
         }
-        
+
         private string telegramMsg() //data saved in the csv
         {
             return prodTbx.Text + " " + carrTbx.Text + " " + DateTime.Now;
         }
-                        
+
         private void saveToFile() //saves to CSV
         {
             DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
             var cal = dfi.Calendar;
-            string filePath = "D:\\coding\\exportedData\\prod1.csv";
+            string filePath = ".\\prod.csv";
             try
             {
                 using (StreamWriter sw = File.AppendText(filePath))
@@ -92,7 +92,7 @@ namespace CCTrace
             }
 
         }
-        
+
         private string db_connect() //DB connect string
         {
             return String.Format("Server={0};Port={1};" +
@@ -100,7 +100,7 @@ namespace CCTrace
                     "localhost", "5432", "postgres",
                     "admin", "CCDB");
         }
-        
+
         private void db_insert(string table) //DB insert
         {
             try
@@ -142,9 +142,9 @@ namespace CCTrace
                     // building query
                     var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM " + table + " WHERE prod_dm = :prod_dm", conn);
                     cmd.Parameters.Add(new NpgsqlParameter("prod_dm", prodTbx.Text));
-                    Int32 count = Convert.ToInt32(cmd.ExecuteScalar());
+                    Int32 countProd = Convert.ToInt32(cmd.ExecuteScalar());
                     conn.Close();
-                    if (count == 0)
+                    if (countProd == 0)
                     {
                         outputLbl.Text = "Kimenet: ";
                         outputMsgLbl.ForeColor = System.Drawing.Color.Black;
@@ -152,22 +152,24 @@ namespace CCTrace
                     }
 
                     //mar van egy talalat akkor megnezem, hogy ezzel az oldallal szerepel-e, ha nem akkor ez BOTTOM OLDAL
-                    else if (count == 1)
+                    //meg kell nézni, hogy habár csak egy találat van, az milyen kerettel szerepel.
+                    //cmd = new NpgsqlCommand("SELECT carr_dm FROM " + table + " WHERE prod_dm = :prod_dm ", conn);
+                    else if (countProd == 1)
                     {
                         conn.Open();
                         cmd = new NpgsqlCommand("SELECT COUNT(*) FROM " + table + " WHERE prod_dm = :prod_dm AND carr_dm = :carr_dm ", conn);
                         cmd.Parameters.Add(new NpgsqlParameter("prod_dm", prodTbx.Text));
                         cmd.Parameters.Add(new NpgsqlParameter("carr_dm", carrTbx.Text));
-                        Int32 count2 = Convert.ToInt32(cmd.ExecuteScalar());
+                        Int32 countProdAndCarr = Convert.ToInt32(cmd.ExecuteScalar());
                         conn.Close();
-                        if (count2 == 1)
+                        if (countProdAndCarr == 1)
                         {
                             outputLbl.Text = "HIBA!";
                             outputMsgLbl.ForeColor = System.Drawing.Color.Red;
                             outputMsgLbl.Text = "Ennek a terméknek ez a fele már lakkozott!";
                             return "error";
                         }
-                        else if (count2 == 0)
+                        else if (countProdAndCarr == 0) //ha másik keretbe került akkor itt átmegy, ellenőrizni kell, hogy ha nincs találat akkor a keret új?
                         {
                             outputLbl.Text = "Kimenet: ";
                             outputMsgLbl.ForeColor = System.Drawing.Color.Black;
@@ -176,7 +178,7 @@ namespace CCTrace
                         else return "error";
 
                     }
-                    else if (count == 2)
+                    else if (countProd == 2)
                     {
                         outputLbl.Text = "HIBA!";
                         outputMsgLbl.ForeColor = System.Drawing.Color.Red;
@@ -222,7 +224,7 @@ namespace CCTrace
                     prodTbx.Text = "";
                     prodTbx.Focus();
                     prodTbx.SelectAll();
-                    
+
                 }
             }
         }
