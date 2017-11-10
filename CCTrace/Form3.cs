@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 using Npgsql;
 
 //testing the db connection
@@ -37,21 +38,12 @@ namespace CCTrace
         private DataSet ds = new DataSet();
         private DataTable dt = new DataTable();
 
-        //DB connect string
-        private string db_connect()
-        {
-            return String.Format("Server={0};Port={1};" +
-                    "User Id={2};Password={3};Database={4};",
-                    "localhost", "5432", "postgres",
-                    "admin", "CCDB");
-        }
-
         private void table_select(string query)
         {
             try
             {
-                // PostgeSQL-style connection string
-                string connstring = db_connect();
+                // connstring stored in App.config
+                string connstring = ConfigurationManager.ConnectionStrings["CCTrace.Properties.Settings.CCDBConnectionString"].ConnectionString;
                 // Making connection with Npgsql provider
                 var conn = new NpgsqlConnection(connstring);
                 conn.Open();

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Npgsql;
 using System.Globalization;
 using System.IO;
+using System.Configuration;
 
 namespace CCTrace
 {
@@ -70,20 +71,12 @@ namespace CCTrace
                 sw.WriteLine(telegramMsg());
             }
         }
-        
-        private string db_connect() //DB connect string
-        {
-            return String.Format("Server={0};Port={1};" +
-                    "User Id={2};Password={3};Database={4};",
-                    "localhost", "5432", "postgres",
-                    "admin", "CCDB");
-        }
 
         private void db_insert() //DB insert
         {
             try
             {
-                string connstring = db_connect();
+                string connstring = ConfigurationManager.ConnectionStrings["CCTrace.Properties.Settings.CCDBConnectionString"].ConnectionString;
                 // Making connection with Npgsql provider
                 var conn = new NpgsqlConnection(connstring);
                 conn.Open();

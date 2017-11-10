@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
 using Npgsql;
 
 //This is the sample product form
@@ -93,19 +94,11 @@ namespace CCTrace
 
         }
 
-        private string db_connect() //DB connect string
-        {
-            return String.Format("Server={0};Port={1};" +
-                    "User Id={2};Password={3};Database={4};",
-                    "localhost", "5432", "postgres",
-                    "admin", "CCDB");
-        }
-
         private void db_insert(string table) //DB insert
         {
             try
             {
-                string connstring = db_connect();
+                string connstring = ConfigurationManager.ConnectionStrings["CCTrace.Properties.Settings.CCDBConnectionString"].ConnectionString;
                 // Making connection with Npgsql provider
                 var conn = new NpgsqlConnection(connstring);
                 conn.Open();
@@ -135,7 +128,7 @@ namespace CCTrace
             {
                 if (table != "Hiba, nem megfelelő adat!")
                 {
-                    string connstring = db_connect();
+                    string connstring = ConfigurationManager.ConnectionStrings["CCTrace.Properties.Settings.CCDBConnectionString"].ConnectionString; ;
                     // Making connection
                     var conn = new NpgsqlConnection(connstring);
                     conn.Open();
