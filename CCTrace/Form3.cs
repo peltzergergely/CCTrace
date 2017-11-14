@@ -10,9 +10,6 @@ using System.Windows.Forms;
 using System.Configuration;
 using Npgsql;
 
-//testing the db connection
-//todo:
-//      make this form into a searchable admin page
 namespace CCTrace
 {
     public partial class Form3 : Form
@@ -44,10 +41,8 @@ namespace CCTrace
             {
                 // connstring stored in App.config
                 string connstring = ConfigurationManager.ConnectionStrings["CCTrace.Properties.Settings.CCDBConnectionString"].ConnectionString;
-                // Making connection with Npgsql provider
                 var conn = new NpgsqlConnection(connstring);
                 conn.Open();
-                // quite complex sql statement
                 string sql = query;
                 // data adapter making request from our connection
                 var da = new NpgsqlDataAdapter(sql, conn);
@@ -63,7 +58,7 @@ namespace CCTrace
             }
             catch (Exception msg)
             {
-                // something went wrong, and you wanna know why
+                // error handling
                 MessageBox.Show(msg.ToString());
                 //throw;
             }
@@ -71,8 +66,7 @@ namespace CCTrace
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            //table_select("SELECT * FROM bmw AND volvo");
-            comboBox1.SelectedIndex = 0;
+            selectCbx.SelectedIndex = 0;
         }
 
         private void termék1_Click(object sender, EventArgs e)
@@ -96,6 +90,16 @@ namespace CCTrace
                 table_select(queryBx.Text);            
             else
                 MessageBox.Show("Ez a művelethez jelszó kell!");
+        }
+
+        private void helpBtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Lekérdezéseket PostgreSQL parancsokkal tudsz indítani." + "\n" + "pl: SELECT * FROM bmw WHERE prod_dm='#azonosító' ");
+        }
+
+        private void select2Btn_Click(object sender, EventArgs e)
+        {
+            table_select("SELECT * FROM " + selectCbx.Text + "='" + selectTbx.Text + "'");
         }
     }
 }
