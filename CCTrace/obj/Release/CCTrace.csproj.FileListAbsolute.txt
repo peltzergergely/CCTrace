@@ -16,5 +16,4 @@ D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Release\CCTrace.csproj.Ge
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Release\CCTrace.csproj.CoreCompileInputs.cache
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Release\CCTrace.exe
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Release\CCTrace.pdb
-D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Release\CCTrace.exe.CodeAnalysisLog.xml
-D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Release\CCTrace.exe.lastcodeanalysissucceeded
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Release\CCTrace.AboutBox1.resources
