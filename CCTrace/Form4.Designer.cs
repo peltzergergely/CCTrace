@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form4));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.headerLbl = new System.Windows.Forms.Label();
             this.batchLbl = new System.Windows.Forms.Label();
@@ -55,7 +56,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 71.63636F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel1.Controls.Add(this.headerLbl, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.batchLbl, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.expLbl, 3, 3);
@@ -161,7 +162,7 @@
             // 
             this.saveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveBtn.Location = new System.Drawing.Point(1137, 531);
+            this.saveBtn.Location = new System.Drawing.Point(1136, 531);
             this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(115, 45);
@@ -217,7 +218,7 @@
             // adminPageToolStripMenuItem
             // 
             this.adminPageToolStripMenuItem.Name = "adminPageToolStripMenuItem";
-            this.adminPageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.adminPageToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.adminPageToolStripMenuItem.Text = "Megnyitás";
             this.adminPageToolStripMenuItem.Click += new System.EventHandler(this.adminPageToolStripMenuItem_Click);
             // 
@@ -228,6 +229,7 @@
             this.ClientSize = new System.Drawing.Size(1285, 594);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "form4";
             this.Text = "Lakk anyag felvitel";

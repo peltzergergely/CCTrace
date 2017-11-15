@@ -17,3 +17,4 @@ D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Release\CCTrace.csproj.Co
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Release\CCTrace.exe
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Release\CCTrace.pdb
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Release\CCTrace.AboutBox1.resources
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Release\CCTrace.csprojResolveAssemblyReference.cache

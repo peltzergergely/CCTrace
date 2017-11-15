@@ -13,11 +13,6 @@ using System.Windows.Forms;
 using System.Configuration;
 using Npgsql;
 
-//This is the sample product form
-//todo: add timestamp - done
-//      save to string - done
-//      dummy output to the db - done
-//      separate target DB based on the information from the carrier DM - done
 namespace CCTrace
 {
     public partial class Form2 : Form
