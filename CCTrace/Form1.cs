@@ -63,5 +63,11 @@ namespace CCTrace
             var frm = new form4(this);
             frm.Show();
         }
+
+        private void névjegyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new AboutBox1();
+            frm.Show();
+        }
     }
 }
