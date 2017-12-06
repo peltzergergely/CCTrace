@@ -1,17 +1,11 @@
 ﻿
+using Npgsql;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+using System.Configuration;
 using System.Data;
-using System.Drawing;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Configuration;
-using Npgsql;
 
 namespace CCTrace
 {
@@ -23,9 +17,11 @@ namespace CCTrace
         {
             InitializeComponent();
             opener = parentForm;
+            ReturnCurrentVarnish();
+            DailyProduction();
         }
 
-        private void button3_Click(object sender, EventArgs e) //exitBtn
+        private void Button3_Click(object sender, EventArgs e) //exitBtn
         {
             this.Close();
         }
@@ -36,11 +32,11 @@ namespace CCTrace
             {
                 this.SelectNextControl((Control)sender, true, true, true, true);
                 if (ActiveControl == saveBtn)
-                    updateLbl(sender, e);
+                    UpdateLbl(sender, e);
             }
         }
 
-        private bool dataValid() //checks if txtbx values are legit
+        private bool DataValid() //checks if txtbx values are legit
         {
             if (prodTbx.TextLength > 23 && carrTbx.TextLength > 17 && (carrTbx.Text.Contains("BMW") || carrTbx.Text.Contains("VOLVO")))
                 return true;
@@ -48,13 +44,12 @@ namespace CCTrace
                 return false;
         }
 
-        private void updateLbl(object sender, EventArgs e) //updates label based on info
+        private void UpdateLbl(object sender, EventArgs e) //updates label based on info
         {
-            if (dataValid())
+            if (DataValid())
             {
                 outputMsgLbl.ForeColor = System.Drawing.Color.Black;
-                //outputMsgLbl.Text = "Az adatok megfelelőek kattints a mentés gombra!";
-                saveBtn_Click(sender, e);
+                SaveBtn_Click(sender, e);
 
             }
             else
@@ -64,12 +59,12 @@ namespace CCTrace
             }
         }
 
-        private string telegramMsg() //data saved in the csv
+        private string TelegramMsg() //data saved in the csv
         {
             return prodTbx.Text + " " + carrTbx.Text + " " + DateTime.Now;
         }
 
-        private void saveToFile() //saves to CSV
+        private void SaveToFile() //saves to CSV
         {
             DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
             var cal = dfi.Calendar;
@@ -78,18 +73,16 @@ namespace CCTrace
             {
                 using (StreamWriter sw = File.AppendText(filePath))
                 {
-                    sw.WriteLine(telegramMsg());
+                    sw.WriteLine(TelegramMsg());
                 }
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
 
-        private void db_insert(string table) //DB insert
+        private void Db_insert(string table) //DB insert
         {
             try
             {
@@ -117,13 +110,13 @@ namespace CCTrace
         //B - product second time but with BOT - query 1 result / no result?
         //C - product goes in again with TOP - ERROR BOT NEEDS TO BE DONE
         //D - product goes in again with BOT - ERROR PRODUCT IS FINISHED
-        private string interlock(string table)
+        private string Interlock(string table)
         {
             try
             {
                 if (table != "Hiba, nem megfelelő adat!")
                 {
-                    string connstring = ConfigurationManager.ConnectionStrings["CCTrace.Properties.Settings.CCDBConnectionString"].ConnectionString; ;
+                    string connstring = ConfigurationManager.ConnectionStrings["CCTrace.Properties.Settings.CCDBConnectionString"].ConnectionString;
                     // Making connection
                     var conn = new NpgsqlConnection(connstring);
                     conn.Open();
@@ -184,7 +177,65 @@ namespace CCTrace
             }
         }
 
-        private string returnTableName()
+        private void DailyProduction()
+        {
+            string connstring = ConfigurationManager.ConnectionStrings["CCTrace.Properties.Settings.CCDBConnectionString"].ConnectionString;
+            // Making connection
+            var conn = new NpgsqlConnection(connstring);
+            conn.Open();
+            // building query
+            var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM bmw WHERE timestamp > 'today'", conn);
+            Int32 countbmw = Convert.ToInt32(cmd.ExecuteScalar());
+            cmd = new NpgsqlCommand("SELECT COUNT(*) FROM volvo WHERE timestamp > 'today'", conn);
+            Int32 countvolvo = Convert.ToInt32(cmd.ExecuteScalar());
+            conn.Close();
+            dailyProdLbl.Text = "Mai napon lakkozva \r\n";
+            dailyProdLbl.Text += "BMW db:";
+            dailyProdLbl.Text += " " + countbmw.ToString();
+            dailyProdLbl.Text += "\r\nVolvo db:";
+            dailyProdLbl.Text += " " + countvolvo.ToString();
+
+        }
+
+        private DataSet ds = new DataSet();
+        private DataTable dt = new DataTable();
+
+        private void ReturnCurrentVarnish()
+        {
+            try
+            {
+                // connstring stored in App.config
+                string connstring = ConfigurationManager.ConnectionStrings["CCTrace.Properties.Settings.CCDBConnectionString"].ConnectionString;
+                var conn = new NpgsqlConnection(connstring);
+                conn.Open();
+                string sql = "SELECT batch, expdate, timestamp" +
+                    " FROM lakk order by timestamp desc limit 2";
+                // data adapter making request from our connection
+                var da = new NpgsqlDataAdapter(sql, conn);
+                ds.Reset();
+                // filling DataSet with result from NpgsqlDataAdapter
+                da.Fill(ds);
+                // since it C# DataSet can handle multiple tables, we will select first
+                dt = ds.Tables[0];
+                // connect grid to DataTable
+                dataGridView1.DataSource = dt;
+                // since we only showing the result we don't need connection anymore
+                conn.Close();
+
+                dataGridView1.Columns[0].HeaderText = "BATCH SZÁM";
+                dataGridView1.Columns[1].HeaderText = "SZAVATOSSÁG";
+                dataGridView1.Columns[2].HeaderText = "BETÖLTÉS";
+            }
+            catch (Exception msg)
+            {
+                // error handling
+                MessageBox.Show(msg.ToString());
+                //throw;
+            }
+            dataGridView1.ClearSelection();
+        }
+
+        private string ReturnTableName()
         {
             if (carrTbx.Text.Contains("BMW"))
                 return "bmw";
@@ -194,32 +245,38 @@ namespace CCTrace
                 return "Hiba, nem megfelelő adat!";
         }
 
-        private void saveBtn_Click(object sender, EventArgs e)
+        private void SaveBtn_Click(object sender, EventArgs e)
         {
             //check data and upload to database, update CSV, and save to pendrive
             //update window with large label stating if this product have to be removed or proceed to other side
-            if (dataValid())
+            if (DataValid())
             {
-                string interlocking = interlock(returnTableName());
+                string interlocking = Interlock(ReturnTableName());
                 if (interlocking == "pass")
                 {
-                    saveToFile();
+                    SaveToFile();
                     //check if product has been already read
-                    db_insert(returnTableName());
+                    Db_insert(ReturnTableName());
                     outputMsgLbl.ForeColor = System.Drawing.Color.Green;
                     outputMsgLbl.Text = "Adatok elmentve!" + "\r\n " + prodTbx.Text + "\r\n" + carrTbx.Text;
                     carrTbx.Text = "";
                     prodTbx.Text = "";
                     prodTbx.Focus();
                     prodTbx.SelectAll();
-
                 }
             }
+            ReturnCurrentVarnish();
         }
 
-        private void adminToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AdminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form3 frm = new Form3(this);
+            frm.Show();
+        }
+
+        private void VarnBtn_Click(object sender, EventArgs e)
+        {
+            var frm = new form4(this);
             frm.Show();
         }
     }

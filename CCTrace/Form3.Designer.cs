@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.selectTbx = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.pwBx = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.termék1 = new System.Windows.Forms.Button();
@@ -40,10 +40,10 @@
             this.queryBx = new System.Windows.Forms.TextBox();
             this.exitBtn = new System.Windows.Forms.Button();
             this.selectBtn = new System.Windows.Forms.Button();
-            this.selectCbx = new System.Windows.Forms.ComboBox();
             this.volvo = new System.Windows.Forms.Button();
+            this.selectCbx = new System.Windows.Forms.ComboBox();
+            this.pwBx = new System.Windows.Forms.TextBox();
             this.helpBtn = new System.Windows.Forms.Button();
-            this.selectTbx = new System.Windows.Forms.TextBox();
             this.select2Btn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -91,6 +91,15 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1285, 525);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // selectTbx
+            // 
+            this.selectTbx.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.selectTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectTbx.Location = new System.Drawing.Point(284, 459);
+            this.selectTbx.Name = "selectTbx";
+            this.selectTbx.Size = new System.Drawing.Size(288, 23);
+            this.selectTbx.TabIndex = 15;
+            // 
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -101,15 +110,6 @@
             this.label2.Size = new System.Drawing.Size(398, 33);
             this.label2.TabIndex = 13;
             this.label2.Text = "jelszó";
-            // 
-            // pwBx
-            // 
-            this.pwBx.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pwBx.Location = new System.Drawing.Point(578, 54);
-            this.pwBx.Name = "pwBx";
-            this.pwBx.PasswordChar = '*';
-            this.pwBx.Size = new System.Drawing.Size(156, 23);
-            this.pwBx.TabIndex = 5;
             // 
             // label1
             // 
@@ -134,14 +134,14 @@
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 7);
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Location = new System.Drawing.Point(40, 86);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
@@ -204,6 +204,17 @@
             this.selectBtn.UseVisualStyleBackColor = true;
             this.selectBtn.Click += new System.EventHandler(this.button1_Click);
             // 
+            // volvo
+            // 
+            this.volvo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.volvo.Location = new System.Drawing.Point(122, 54);
+            this.volvo.Name = "volvo";
+            this.volvo.Size = new System.Drawing.Size(75, 27);
+            this.volvo.TabIndex = 2;
+            this.volvo.Text = "Volvo";
+            this.volvo.UseVisualStyleBackColor = true;
+            this.volvo.Click += new System.EventHandler(this.volvo_Click);
+            // 
             // selectCbx
             // 
             this.selectCbx.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -222,16 +233,14 @@
             this.selectCbx.Size = new System.Drawing.Size(237, 24);
             this.selectCbx.TabIndex = 7;
             // 
-            // volvo
+            // pwBx
             // 
-            this.volvo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.volvo.Location = new System.Drawing.Point(122, 54);
-            this.volvo.Name = "volvo";
-            this.volvo.Size = new System.Drawing.Size(75, 27);
-            this.volvo.TabIndex = 2;
-            this.volvo.Text = "Volvo";
-            this.volvo.UseVisualStyleBackColor = true;
-            this.volvo.Click += new System.EventHandler(this.volvo_Click);
+            this.pwBx.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pwBx.Location = new System.Drawing.Point(578, 54);
+            this.pwBx.Name = "pwBx";
+            this.pwBx.PasswordChar = '*';
+            this.pwBx.Size = new System.Drawing.Size(156, 23);
+            this.pwBx.TabIndex = 5;
             // 
             // helpBtn
             // 
@@ -242,15 +251,6 @@
             this.helpBtn.Text = "Segítség";
             this.helpBtn.UseVisualStyleBackColor = true;
             this.helpBtn.Click += new System.EventHandler(this.helpBtn_Click);
-            // 
-            // selectTbx
-            // 
-            this.selectTbx.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.selectTbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectTbx.Location = new System.Drawing.Point(284, 459);
-            this.selectTbx.Name = "selectTbx";
-            this.selectTbx.Size = new System.Drawing.Size(288, 23);
-            this.selectTbx.TabIndex = 15;
             // 
             // select2Btn
             // 
