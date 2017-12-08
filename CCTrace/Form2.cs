@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Globalization;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace CCTrace
@@ -194,6 +195,11 @@ namespace CCTrace
             dailyProdLbl.Text += " " + countbmw.ToString();
             dailyProdLbl.Text += "\r\nVolvo db:";
             dailyProdLbl.Text += " " + countvolvo.ToString();
+            int sum = countvolvo + countbmw;
+            if (sum % 100 == 0)
+            {
+                MessageBox.Show("Ellenőrizd a lakk mennyiségét! Ha utántöltés szükséges akkor kattints a 'Lakk feltöltése gombra!' ");
+            }
 
         }
 
@@ -257,8 +263,9 @@ namespace CCTrace
                     SaveToFile();
                     //check if product has been already read
                     Db_insert(ReturnTableName());
+                    Thread.Sleep(500);
                     outputMsgLbl.ForeColor = System.Drawing.Color.Green;
-                    outputMsgLbl.Text = "Adatok elmentve!" + "\r\n " + prodTbx.Text + "\r\n" + carrTbx.Text;
+                    outputMsgLbl.Text = "Adatok elmentve!" + "\r\n" + prodTbx.Text + "\r\n" + carrTbx.Text + "\r\n" + DateTime.Now;
                     carrTbx.Text = "";
                     prodTbx.Text = "";
                     prodTbx.Focus();
@@ -266,6 +273,7 @@ namespace CCTrace
                 }
             }
             ReturnCurrentVarnish();
+            DailyProduction();
         }
 
         private void AdminToolStripMenuItem_Click(object sender, EventArgs e)

@@ -116,6 +116,7 @@
             this.varnBtn.Name = "varnBtn";
             this.varnBtn.Size = new System.Drawing.Size(208, 151);
             this.varnBtn.TabIndex = 11;
+            this.varnBtn.TabStop = false;
             this.varnBtn.Text = "Lakk feltöltése";
             this.varnBtn.UseVisualStyleBackColor = false;
             this.varnBtn.Click += new System.EventHandler(this.VarnBtn_Click);

@@ -19,21 +19,6 @@ D:\Coding\Visual Studio 2017\source\repos\CCTrace\CCTrace\obj\Debug\CCTrace.cspr
 D:\Coding\Visual Studio 2017\source\repos\CCTrace\CCTrace\obj\Debug\CCTrace.exe
 D:\Coding\Visual Studio 2017\source\repos\CCTrace\CCTrace\obj\Debug\CCTrace.pdb
 D:\Coding\Visual Studio 2017\source\repos\CCTrace\CCTrace\obj\Debug\CCTrace.Form2.resources
-D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Debug\CCTrace.exe.config
-D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Debug\CCTrace.exe
-D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Debug\CCTrace.pdb
-D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.csprojResolveAssemblyReference.cache
-D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.MainScr.resources
-D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.Form2.resources
-D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.Properties.Resources.resources
-D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.csproj.GenerateResource.Cache
-D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.csproj.CoreCompileInputs.cache
-D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.exe
-D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.pdb
-D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.Form3.resources
-D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Debug\Npgsql.dll
-D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Debug\Mono.Security.dll
-D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.form4.resources
 D:\Coding\VS2017\source\repos\CCTrace\CCTrace\bin\Debug\CCTrace.exe.config
 D:\Coding\VS2017\source\repos\CCTrace\CCTrace\bin\Debug\CCTrace.exe
 D:\Coding\VS2017\source\repos\CCTrace\CCTrace\bin\Debug\CCTrace.pdb
@@ -51,8 +36,22 @@ D:\Coding\VS2017\source\repos\CCTrace\CCTrace\obj\Debug\CCTrace.csproj.GenerateR
 D:\Coding\VS2017\source\repos\CCTrace\CCTrace\obj\Debug\CCTrace.csproj.CoreCompileInputs.cache
 D:\Coding\VS2017\source\repos\CCTrace\CCTrace\obj\Debug\CCTrace.exe
 D:\Coding\VS2017\source\repos\CCTrace\CCTrace\obj\Debug\CCTrace.pdb
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Debug\CCTrace.exe.config
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Debug\CCTrace.exe
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Debug\CCTrace.pdb
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Debug\Mono.Security.dll
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Debug\Npgsql.dll
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Debug\System.Threading.Tasks.Extensions.dll
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Debug\Npgsql.xml
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Debug\System.Threading.Tasks.Extensions.xml
-D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.Form5.resources
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.AboutBox1.resources
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.MainScr.resources
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.Form2.resources
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.Form3.resources
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.form4.resources
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.Form5.resources
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.Properties.Resources.resources
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.csproj.GenerateResource.Cache
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.csproj.CoreCompileInputs.cache
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.exe
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.pdb
