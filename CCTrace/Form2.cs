@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Globalization;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -136,13 +137,15 @@ namespace CCTrace
                     //mar van egy talalat akkor megnezem, hogy ezzel az oldallal szerepel-e, ha nem akkor ez BOTTOM OLDAL
                     //meg kell nézni, hogy habár csak egy találat van, az milyen kerettel szerepel.
                     //cmd = new NpgsqlCommand("SELECT carr_dm FROM " + table + " WHERE prod_dm = :prod_dm ", conn);
+
+                    //1 oldal esetén lekérni a KERET számát és ha az eltér az aktuálistól akkor hiba!
                     else if (countProd == 1)
                     {
                         conn.Open();
                         cmd = new NpgsqlCommand("SELECT COUNT(*) FROM " + table + " WHERE prod_dm = :prod_dm AND carr_dm = :carr_dm ", conn);
                         cmd.Parameters.Add(new NpgsqlParameter("prod_dm", prodTbx.Text));
                         cmd.Parameters.Add(new NpgsqlParameter("carr_dm", carrTbx.Text));
-                        Int32 countProdAndCarr = Convert.ToInt32(cmd.ExecuteScalar());
+                        Int16 countProdAndCarr = Convert.ToInt16(cmd.ExecuteScalar());
                         conn.Close();
                         if (countProdAndCarr == 1)
                         {
@@ -153,9 +156,24 @@ namespace CCTrace
                         }
                         else if (countProdAndCarr == 0) //ha másik keretbe került akkor itt átmegy, ellenőrizni kell, hogy ha nincs találat akkor a keret új?
                         {
-                            outputLbl.Text = "Kimenet: ";
-                            outputMsgLbl.ForeColor = System.Drawing.Color.Black;
-                            return "pass";
+                            //itt a keret és a termék páros nem szerepel az adatbázisban, akkor megnézem, hogy a termék mivel szerepel és azt hasonlítom össze a jelenlegivel
+                            conn.Open();                        
+                            cmd = new NpgsqlCommand("SELECT carr_dm FROM " + table + " WHERE prod_dm = :prod_dm ", conn);
+                            cmd.Parameters.Add(new NpgsqlParameter("prod_dm", prodTbx.Text));
+                            string getCarrUsedBefore = Convert.ToString(cmd.ExecuteScalar());
+                            //le kell szednem az utolsó 2 karaktert és összehasonlítani, ha nem egyezik akkor keret csere történt
+                            string getIdOfCarrUsedBefore = (Regex.Match(getCarrUsedBefore, @"\d{2}$")).ToString();
+                            string getIdOfCarrUsedNow = (Regex.Match(carrTbx.Text, @"\d{2}$")).ToString();
+                            if (Int16.Parse(getIdOfCarrUsedBefore) == Convert.ToInt16(getIdOfCarrUsedNow))
+                            {
+                                return "pass";
+                            }
+                            else
+                            {
+                                outputMsgLbl.ForeColor = System.Drawing.Color.Red;
+                                outputMsgLbl.Text = "HIBA: keret csere történt, a termék korábban a " + getIdOfCarrUsedBefore + " számú kerettel lett lakkozva!!!";
+                                return "error";
+                            }
                         }
                         else return "error";
 
