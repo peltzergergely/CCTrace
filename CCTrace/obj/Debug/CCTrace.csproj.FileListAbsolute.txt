@@ -55,3 +55,4 @@ D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.csproj.Gene
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.csproj.CoreCompileInputs.cache
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.exe
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.pdb
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.csprojResolveAssemblyReference.cache

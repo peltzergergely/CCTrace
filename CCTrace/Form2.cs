@@ -3,10 +3,12 @@ using Npgsql;
 using System;
 using System.Configuration;
 using System.Data;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CCTrace
@@ -56,8 +58,9 @@ namespace CCTrace
             }
             else
             {
-                outputMsgLbl.ForeColor = System.Drawing.Color.Red;
                 outputMsgLbl.Text = "Nem megfelelő adatok!";
+                ErrorBlinking();
+
             }
         }
 
@@ -150,7 +153,6 @@ namespace CCTrace
                         if (countProdAndCarr == 1)
                         {
                             outputLbl.Text = "HIBA!";
-                            outputMsgLbl.ForeColor = System.Drawing.Color.Red;
                             outputMsgLbl.Text = "Ennek a terméknek ez a fele már lakkozott!";
                             return "error";
                         }
@@ -161,6 +163,7 @@ namespace CCTrace
                             cmd = new NpgsqlCommand("SELECT carr_dm FROM " + table + " WHERE prod_dm = :prod_dm ", conn);
                             cmd.Parameters.Add(new NpgsqlParameter("prod_dm", prodTbx.Text));
                             string getCarrUsedBefore = Convert.ToString(cmd.ExecuteScalar());
+                            conn.Close();
                             //le kell szednem az utolsó 2 karaktert és összehasonlítani, ha nem egyezik akkor keret csere történt
                             string getIdOfCarrUsedBefore = (Regex.Match(getCarrUsedBefore, @"\d{2}$")).ToString();
                             string getIdOfCarrUsedNow = (Regex.Match(carrTbx.Text, @"\d{2}$")).ToString();
@@ -170,7 +173,6 @@ namespace CCTrace
                             }
                             else
                             {
-                                outputMsgLbl.ForeColor = System.Drawing.Color.Red;
                                 outputMsgLbl.Text = "HIBA: keret csere történt, a termék korábban a " + getIdOfCarrUsedBefore + " számú kerettel lett lakkozva!!!";
                                 return "error";
                             }
@@ -181,7 +183,6 @@ namespace CCTrace
                     else if (countProd == 2)
                     {
                         outputLbl.Text = "HIBA!";
-                        outputMsgLbl.ForeColor = System.Drawing.Color.Red;
                         outputMsgLbl.Text = "Ennek a terméknek mindkét oldala lakkozott!";
                         return "error";
                     }
@@ -269,6 +270,33 @@ namespace CCTrace
                 return "Hiba, nem megfelelő adat!";
         }
 
+        private void ClearForm()
+        {
+            carrTbx.Text = "";
+            prodTbx.Text = "";
+            prodTbx.Focus();
+            prodTbx.SelectAll();
+        }
+
+
+            //Thread.Sleep(150);
+            //tableLayoutPanel1.BackColor = Color.Red;
+            //Thread.Sleep(150);
+            //tableLayoutPanel1.BackColor = Color.White;
+            private async void ErrorBlinking()
+            {
+            int i = 0;
+                while (i < 12)
+                {
+                    await Task.Delay(500);
+                    tableLayoutPanel1.BackColor = tableLayoutPanel1.BackColor == Color.Red ? SystemColors.Control : Color.Red;
+                i = i + 1;
+                }
+            tableLayoutPanel1.BackColor = Color.Red;
+            outputMsgLbl.ForeColor = Color.Black;
+            }
+
+
         private void SaveBtn_Click(object sender, EventArgs e)
         {
             //check data and upload to database, update CSV, and save to pendrive
@@ -281,17 +309,17 @@ namespace CCTrace
                     SaveToFile();
                     //check if product has been already read
                     Db_insert(ReturnTableName());
-                    Thread.Sleep(500);
+                    tableLayoutPanel1.BackColor = SystemColors.Control;
                     outputMsgLbl.ForeColor = System.Drawing.Color.Green;
                     outputMsgLbl.Text = "Adatok elmentve!" + "\r\n" + prodTbx.Text + "\r\n" + carrTbx.Text + "\r\n" + DateTime.Now;
-                    carrTbx.Text = "";
-                    prodTbx.Text = "";
-                    prodTbx.Focus();
-                    prodTbx.SelectAll();
                 }
+                else ErrorBlinking();
             }
+            else ErrorBlinking();
+
             ReturnCurrentVarnish();
             DailyProduction();
+            ClearForm();
         }
 
         private void AdminToolStripMenuItem_Click(object sender, EventArgs e)
