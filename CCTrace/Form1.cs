@@ -48,7 +48,7 @@ namespace CCTrace
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var frm = new Form2(this);
+            var frm = new MainScreen(this);
             frm.Show();
         }
 

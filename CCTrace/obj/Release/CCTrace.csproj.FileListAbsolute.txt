@@ -7,7 +7,6 @@ D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Release\System.Threading.
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Release\Npgsql.xml
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\bin\Release\System.Threading.Tasks.Extensions.xml
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Release\CCTrace.MainScr.resources
-D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Release\CCTrace.Form2.resources
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Release\CCTrace.Form3.resources
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Release\CCTrace.form4.resources
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Release\CCTrace.Form5.resources
@@ -18,3 +17,23 @@ D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Release\CCTrace.exe
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Release\CCTrace.pdb
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Release\CCTrace.AboutBox1.resources
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Release\CCTrace.csprojResolveAssemblyReference.cache
+F:\CCTrace\CCTrace\bin\Release\CCTrace.exe.config
+F:\CCTrace\CCTrace\bin\Release\CCTrace.exe
+F:\CCTrace\CCTrace\bin\Release\CCTrace.pdb
+F:\CCTrace\CCTrace\bin\Release\Npgsql.dll
+F:\CCTrace\CCTrace\bin\Release\System.Threading.Tasks.Extensions.dll
+F:\CCTrace\CCTrace\bin\Release\Npgsql.xml
+F:\CCTrace\CCTrace\bin\Release\System.Threading.Tasks.Extensions.xml
+F:\CCTrace\CCTrace\obj\Release\CCTrace.csprojResolveAssemblyReference.cache
+F:\CCTrace\CCTrace\obj\Release\CCTrace.AboutBox1.resources
+F:\CCTrace\CCTrace\obj\Release\CCTrace.MainScr.resources
+F:\CCTrace\CCTrace\obj\Release\CCTrace.Form2.resources
+F:\CCTrace\CCTrace\obj\Release\CCTrace.Form3.resources
+F:\CCTrace\CCTrace\obj\Release\CCTrace.form4.resources
+F:\CCTrace\CCTrace\obj\Release\CCTrace.Form5.resources
+F:\CCTrace\CCTrace\obj\Release\CCTrace.Properties.Resources.resources
+F:\CCTrace\CCTrace\obj\Release\CCTrace.csproj.GenerateResource.Cache
+F:\CCTrace\CCTrace\obj\Release\CCTrace.csproj.CoreCompileInputs.cache
+F:\CCTrace\CCTrace\obj\Release\CCTrace.exe
+F:\CCTrace\CCTrace\obj\Release\CCTrace.pdb
+D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Release\CCTrace.MainScreen.resources

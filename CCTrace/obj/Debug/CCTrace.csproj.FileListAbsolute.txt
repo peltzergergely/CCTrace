@@ -56,3 +56,21 @@ D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.csproj.Core
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.exe
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.pdb
 D:\Coding\Visual Studio 2017\repos\CCTrace\CCTrace\obj\Debug\CCTrace.csprojResolveAssemblyReference.cache
+I:\CCTrace\CCTrace\bin\Debug\CCTrace.exe.config
+I:\CCTrace\CCTrace\obj\Debug\CCTrace.exe
+I:\CCTrace\CCTrace\obj\Debug\CCTrace.pdb
+I:\CCTrace\CCTrace\bin\Debug\CCTrace.exe
+I:\CCTrace\CCTrace\bin\Debug\CCTrace.pdb
+I:\CCTrace\CCTrace\bin\Debug\Npgsql.dll
+I:\CCTrace\CCTrace\bin\Debug\System.Threading.Tasks.Extensions.dll
+I:\CCTrace\CCTrace\bin\Debug\Npgsql.xml
+I:\CCTrace\CCTrace\bin\Debug\System.Threading.Tasks.Extensions.xml
+I:\CCTrace\CCTrace\obj\Debug\CCTrace.csprojResolveAssemblyReference.cache
+I:\CCTrace\CCTrace\obj\Debug\CCTrace.AboutBox1.resources
+I:\CCTrace\CCTrace\obj\Debug\CCTrace.MainScr.resources
+I:\CCTrace\CCTrace\obj\Debug\CCTrace.Form2.resources
+I:\CCTrace\CCTrace\obj\Debug\CCTrace.Form3.resources
+I:\CCTrace\CCTrace\obj\Debug\CCTrace.form4.resources
+I:\CCTrace\CCTrace\obj\Debug\CCTrace.Form5.resources
+I:\CCTrace\CCTrace\obj\Debug\CCTrace.Properties.Resources.resources
+I:\CCTrace\CCTrace\obj\Debug\CCTrace.csproj.GenerateResource.Cache

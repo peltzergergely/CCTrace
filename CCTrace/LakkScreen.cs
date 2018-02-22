@@ -81,10 +81,11 @@ namespace CCTrace
                 var conn = new NpgsqlConnection(connstring);
                 conn.Open();
                 // building SQL query
-                var cmd = new NpgsqlCommand("INSERT INTO lakk (batch, expdate, timestamp) VALUES(:batch, :expdate, :timestamp)", conn);
+                var cmd = new NpgsqlCommand("INSERT INTO lakk (batch, expdate, timestamp, workstation) VALUES(:batch, :expdate, :timestamp, :workstation)", conn);
                 cmd.Parameters.Add(new NpgsqlParameter("batch", batchTbx.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("expdate", expdateDtp.Value));
                 cmd.Parameters.Add(new NpgsqlParameter("timestamp", DateTime.Now));
+                cmd.Parameters.Add(new NpgsqlParameter("workstation", Environment.MachineName));
                 cmd.ExecuteNonQuery();
                 //closing connection ASAP
                 conn.Close();

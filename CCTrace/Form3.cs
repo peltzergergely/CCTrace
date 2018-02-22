@@ -20,6 +20,7 @@ namespace CCTrace
         {
             InitializeComponent();
             opener = parentForm;
+            PopulateComboBox();
         }
 
         public Form3()
@@ -97,9 +98,28 @@ namespace CCTrace
             MessageBox.Show("Lekérdezéseket PostgreSQL parancsokkal tudsz indítani." + "\n" + "pl: SELECT * FROM bmw WHERE prod_dm='#azonosító' ");
         }
 
+        private void PopulateComboBox()
+        {
+            var dict = new Dictionary<string, string>();
+            dict.Add("bmw", "BMW");
+            dict.Add("volvo", "Volvo");
+            dict.Add("lakk", "lakk");
+
+            selectCbx.DataSource = new BindingSource(dict, null);
+            selectCbx.DisplayMember = "Value";
+            selectCbx.ValueMember = "Key";
+        }
+
         private void select2Btn_Click(object sender, EventArgs e)
         {
-            table_select("SELECT * FROM " + selectCbx.Text + "='" + selectTbx.Text + "'");
+            //table_select("SELECT * FROM " + selectCbx.Text + "='" + selectTbx.Text + "'");
+            MessageBox.Show(selectCbx.SelectedValue.ToString());
+            table_select("SELECT * FROM " + prodCbx.SelectedValue.ToString() + " WHERE workstation = '" + workStationCbx.SelectedValue.ToString() + " ");
+            string s = "SELECT * FROM " + prodCbx.SelectedValue.ToString() + " WHERE workstation = '" + workStationCbx.SelectedValue.ToString() + "' ");
+            if (xyTextbox.text.length > 0)
+            {
+                s = s+ " AND prod_dm = '" + xyTextBox.text + "'"
+            }
         }
     }
 }

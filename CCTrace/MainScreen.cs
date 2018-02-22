@@ -10,14 +10,22 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace CCTrace
 {
-    public partial class Form2 : Form
+    public partial class MainScreen : Form
     {
         Form opener;
+        string connetionstringgen2 = "Data Source=10.207.40.200;Initial Catalog=Gen2;Persist Security Info=True;User ID=GEN2;Password=1234";
 
-        public Form2(Form parentForm) //form opener
+        private string heatsinkID { get; set; }
+
+        private string mainboardID { get; set; }
+
+        private bool PreChkResult { get; set; } 
+
+        public MainScreen(Form parentForm) //form opener
         {
             InitializeComponent();
             opener = parentForm;
@@ -32,17 +40,94 @@ namespace CCTrace
 
         private void Control_KeyUp(object sender, KeyEventArgs e)  //jumps between controls and validates
         {
-            if ((e.KeyCode == Keys.Enter) || (e.KeyCode == Keys.Return))
+            if (((e.KeyCode == Keys.Enter) || (e.KeyCode == Keys.Return)) && prodTbx.TextLength > 0)
             {
+                
                 this.SelectNextControl((Control)sender, true, true, true, true);
                 if (ActiveControl == saveBtn)
                     UpdateLbl(sender, e);
             }
         }
 
-        private bool DataValid() //checks if txtbx values are legit
+        //doing a check if the product is in the database if not then it's not a valid datamatrix
+        //if it goes into the catchblock then the result is not valid give an error
+        private void HsOrMb()
         {
-            if (prodTbx.TextLength > 23 && carrTbx.TextLength > 17 && (carrTbx.Text.Contains("BMW") || carrTbx.Text.Contains("VOLVO")))
+            if (prodTbx.TextLength == 12) //gen2 heatsink lenght gives the mainboard DM from the heatsink DM
+            {
+                try
+                {
+                    SqlConnection cnn = new SqlConnection(connetionstringgen2);
+                    cnn.Open();
+                    string SQLQuery;
+                    SQLQuery = "Select MainBoard_ID from [dbo].[Main] WHERE Heatsink_ID = '" + prodTbx.Text + "'";
+                    SqlCommand SQLcmd = new SqlCommand(SQLQuery, cnn);
+                    SQLcmd.ExecuteNonQuery();
+                    SqlDataAdapter adpm = new SqlDataAdapter(SQLcmd);
+                    DataTable dtm = new DataTable();
+                    adpm.Fill(dtm);
+                    string mbid = dtm.Rows[0]["MainBoard_ID"].ToString();
+                    heatsinkID = prodTbx.Text;
+                    mainboardID = mbid;
+                }
+                catch (Exception msg)
+                {
+                    MessageBox.Show(msg.ToString());
+                }
+            }
+            else if (prodTbx.TextLength > 23) //gen2 mainboard dm length
+            {
+                try
+                {
+                    SqlConnection cnn = new SqlConnection(connetionstringgen2);
+                    cnn.Open();
+                    string StrQuery1m;
+                    StrQuery1m = "Select HeatSink_ID from [dbo].[Main] WHERE MainBoard_ID = '" + prodTbx.Text + "'";
+                    SqlCommand objcmdm = new SqlCommand(StrQuery1m, cnn);
+                    objcmdm.ExecuteNonQuery();
+                    SqlDataAdapter adpm = new SqlDataAdapter(objcmdm);
+                    DataTable dtm = new DataTable();
+                    adpm.Fill(dtm);
+                    string mbid = dtm.Rows[0]["HeatSink_ID"].ToString();
+                    heatsinkID = mbid;
+                    mainboardID = prodTbx.Text;
+                }
+                catch (Exception msg)
+                {
+                    MessageBox.Show(msg.ToString());
+                }
+            }
+        }
+
+        private bool PreCheck()
+        {
+            try
+            {
+                SqlConnection cnn = new SqlConnection(connetionstringgen2);
+                cnn.Open();
+                string StrQuery1m;
+                StrQuery1m = "Select Result from [dbo].[HeatSinkData] WHERE Heatsink_ID = '" + heatsinkID + "' AND Operation_ID = '10615' ORDER BY Date DESC";
+                SqlCommand objcmdm = new SqlCommand(StrQuery1m, cnn);
+                objcmdm.ExecuteNonQuery();
+                SqlDataAdapter adpm = new SqlDataAdapter(objcmdm);
+                DataTable dtm = new DataTable();
+                adpm.Fill(dtm);
+                if (dtm.Rows[0]["Result"].ToString() == "OK")
+                {
+                    return true;
+                }
+                else return false;
+            }
+            catch (Exception msg)
+            {
+                MessageBox.Show(msg.ToString());
+                return false;
+            }
+        }
+
+        private bool DataValid() //checks carrier values are legit, decides which table to save to
+        {
+            if (carrTbx.TextLength > 17 && (carrTbx.Text.Contains("BMW") || carrTbx.Text.Contains("VOLVO")))
                 return true;
             else
                 return false;
@@ -54,13 +139,11 @@ namespace CCTrace
             {
                 outputMsgLbl.ForeColor = System.Drawing.Color.Black;
                 SaveBtn_Click(sender, e);
-
             }
             else
             {
                 outputMsgLbl.Text = "Nem megfelelő adatok!";
                 ErrorBlinking();
-
             }
         }
 
@@ -96,10 +179,11 @@ namespace CCTrace
                 var conn = new NpgsqlConnection(connstring);
                 conn.Open();
                 // building SQL query
-                var cmd = new NpgsqlCommand("INSERT INTO " + table + " (prod_dm, carr_dm, timestamp) VALUES(:prod_dm, :carr_dm, :timestamp)", conn);
-                cmd.Parameters.Add(new NpgsqlParameter("prod_dm", prodTbx.Text));
+                var cmd = new NpgsqlCommand("INSERT INTO " + table + " (prod_dm, carr_dm, timestamp, workstation) VALUES(:prod_dm, :carr_dm, :timestamp, :workstation)", conn);
+                cmd.Parameters.Add(new NpgsqlParameter("prod_dm", mainboardID));
                 cmd.Parameters.Add(new NpgsqlParameter("carr_dm", carrTbx.Text));
                 cmd.Parameters.Add(new NpgsqlParameter("timestamp", DateTime.Now));
+                cmd.Parameters.Add(new NpgsqlParameter("workstation", Environment.MachineName));
                 cmd.ExecuteNonQuery();
                 //closing connection ASAP
                 conn.Close();
@@ -127,7 +211,7 @@ namespace CCTrace
                     conn.Open();
                     // building query
                     var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM " + table + " WHERE prod_dm = :prod_dm", conn);
-                    cmd.Parameters.Add(new NpgsqlParameter("prod_dm", prodTbx.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("prod_dm", mainboardID));
                     Int32 countProd = Convert.ToInt32(cmd.ExecuteScalar());
                     conn.Close();
                     if (countProd == 0)
@@ -146,7 +230,7 @@ namespace CCTrace
                     {
                         conn.Open();
                         cmd = new NpgsqlCommand("SELECT COUNT(*) FROM " + table + " WHERE prod_dm = :prod_dm AND carr_dm = :carr_dm ", conn);
-                        cmd.Parameters.Add(new NpgsqlParameter("prod_dm", prodTbx.Text));
+                        cmd.Parameters.Add(new NpgsqlParameter("prod_dm", mainboardID));
                         cmd.Parameters.Add(new NpgsqlParameter("carr_dm", carrTbx.Text));
                         Int16 countProdAndCarr = Convert.ToInt16(cmd.ExecuteScalar());
                         conn.Close();
@@ -159,9 +243,9 @@ namespace CCTrace
                         else if (countProdAndCarr == 0) //ha másik keretbe került akkor itt átmegy, ellenőrizni kell, hogy ha nincs találat akkor a keret új?
                         {
                             //itt a keret és a termék páros nem szerepel az adatbázisban, akkor megnézem, hogy a termék mivel szerepel és azt hasonlítom össze a jelenlegivel
-                            conn.Open();                        
+                            conn.Open();
                             cmd = new NpgsqlCommand("SELECT carr_dm FROM " + table + " WHERE prod_dm = :prod_dm ", conn);
-                            cmd.Parameters.Add(new NpgsqlParameter("prod_dm", prodTbx.Text));
+                            cmd.Parameters.Add(new NpgsqlParameter("prod_dm", mainboardID));
                             string getCarrUsedBefore = Convert.ToString(cmd.ExecuteScalar());
                             conn.Close();
                             //le kell szednem az utolsó 2 karaktert és összehasonlítani, ha nem egyezik akkor keret csere történt
@@ -279,43 +363,56 @@ namespace CCTrace
         }
 
 
-            //Thread.Sleep(150);
-            //tableLayoutPanel1.BackColor = Color.Red;
-            //Thread.Sleep(150);
-            //tableLayoutPanel1.BackColor = Color.White;
-            private async void ErrorBlinking()
-            {
+        //Thread.Sleep(150);
+        //tableLayoutPanel1.BackColor = Color.Red;
+        //Thread.Sleep(150);
+        //tableLayoutPanel1.BackColor = Color.White;
+        private async void ErrorBlinking()
+        {
             int i = 0;
-                while (i < 12)
-                {
-                    await Task.Delay(500);
-                    tableLayoutPanel1.BackColor = tableLayoutPanel1.BackColor == Color.Red ? SystemColors.Control : Color.Red;
+            while (i < 12)
+            {
+                await Task.Delay(500);
+                tableLayoutPanel1.BackColor = tableLayoutPanel1.BackColor == Color.Red ? SystemColors.Control : Color.Red;
                 i = i + 1;
-                }
+            }
             tableLayoutPanel1.BackColor = Color.Red;
             outputMsgLbl.ForeColor = Color.Black;
-            }
+        }
+
 
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
             //check data and upload to database, update CSV, and save to pendrive
             //update window with large label stating if this product have to be removed or proceed to other side
-            if (DataValid())
+            HsOrMb();
+            PreChkResult = PreCheck();
+            if (PreChkResult)
             {
-                string interlocking = Interlock(ReturnTableName());
-                if (interlocking == "pass")
+
+                if (DataValid())
                 {
-                    SaveToFile();
-                    //check if product has been already read
-                    Db_insert(ReturnTableName());
-                    tableLayoutPanel1.BackColor = SystemColors.Control;
-                    outputMsgLbl.ForeColor = System.Drawing.Color.Green;
-                    outputMsgLbl.Text = "Adatok elmentve!" + "\r\n" + prodTbx.Text + "\r\n" + carrTbx.Text + "\r\n" + DateTime.Now;
+                    string interlocking = Interlock(ReturnTableName());
+                    if (interlocking == "pass")
+                    {
+                        //SaveToFile();
+                        //check if product has been already read
+                        Db_insert(ReturnTableName());
+                        tableLayoutPanel1.BackColor = SystemColors.Control;
+                        outputMsgLbl.ForeColor = System.Drawing.Color.Green;
+                        outputMsgLbl.Text = "Adatok elmentve!" + "\r\n" + prodTbx.Text + "\r\n" + carrTbx.Text + "\r\n" + DateTime.Now;
+                    }
+                    else ErrorBlinking();
                 }
                 else ErrorBlinking();
             }
-            else ErrorBlinking();
+            else
+            {
+                ErrorBlinking();
+                MessageBox.Show("A TERMÉK NINCS TESZTELVE! NE LAKKOZD, SZÓLJ A MŰSZAKVEZETŐNEK!");
+                outputMsgLbl.Text = "A TERMÉK NINCS TESZTELVE! NE LAKKOZD, SZÓLJ A MŰSZAKVEZETŐNEK!";
+            }
 
             ReturnCurrentVarnish();
             DailyProduction();
